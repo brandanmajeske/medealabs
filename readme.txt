@@ -1,2 +1,2 @@
 Medea Labs
-Media + Ideas = Grow Ideas
+Media + Ideas; Grow Ideas
