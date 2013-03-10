@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.15)
 # Database: mldb
-# Generation Time: 2013-03-10 21:22:07 +0000
+# Generation Time: 2013-03-10 21:55:55 +0000
 # ************************************************************
 
 
@@ -18,6 +18,58 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table image_location
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `image_location`;
+
+CREATE TABLE `image_location` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `image_path` varchar(255) DEFAULT NULL,
+  `image_name` varchar(255) DEFAULT NULL,
+  `image_width` smallint(4) DEFAULT NULL,
+  `image_height` smallint(4) DEFAULT NULL,
+  `alt_tag_text` varchar(255) DEFAULT NULL,
+  `description` text,
+  `upld_on` timestamp NULL DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `proj_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table posts
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `posts`;
+
+CREATE TABLE `posts` (
+  `post_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `post_title` varchar(255) DEFAULT NULL,
+  `post_text` text,
+  `proj_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`post_id`),
+  KEY `proj_id` (`proj_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+# Dump of table projects
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `projects`;
+
+CREATE TABLE `projects` (
+  `proj_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `proj_name` varchar(32) DEFAULT NULL,
+  `proj_description` text,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`proj_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 # Dump of table users
