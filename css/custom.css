@@ -3,7 +3,9 @@ body {
 	font-family: "Duru Sans", sans-serif;
 }
 
-h2 {
+
+
+h1, h2 {
 	font-family: "Prosto One", sans-serif;
 	color: #FA7500;
 }
@@ -11,6 +13,7 @@ h2 {
 a {
 	color: #0DBCFF;
 }
+
 
 .navbar-inverse .navbar-inner {
 	color: #ffffff;
