@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Medea Labs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -15,12 +15,13 @@
       }
     </style>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="/js/html5shiv.js"></script>
     <![endif]-->
-
+    
     </head>
 
   <body>
@@ -33,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="#">Medea Labs</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
@@ -46,16 +47,3 @@
     </div>
 
     <div class="container">
-
-      <h1>Bootstrap starter template</h1>
-      <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
-
-    </div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.js"></script>
-      </body>
-</html>
