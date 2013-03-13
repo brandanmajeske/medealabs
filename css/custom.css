@@ -8,6 +8,10 @@ h2 {
 	color: #FA7500;
 }
 
+a {
+	color: #0DBCFF;
+}
+
 .navbar-inverse .navbar-inner {
 	color: #ffffff;
     background-color: #4FBF31!important;
