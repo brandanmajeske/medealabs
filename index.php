@@ -1,8 +1,7 @@
-<?php include('views/header.inc'); ?>
+<?php 
 
-<h2>Hello World!</h2>
-<div class="span4">
-<p>Today is: <?php echo date('D, F Y');?></p>
-</div>
+include('views/header.inc');
+include('views/home.inc');
+include('views/footer.inc'); 
 
-<?php include('views/footer.inc'); ?>
+?>

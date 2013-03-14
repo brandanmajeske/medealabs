@@ -3,7 +3,9 @@ body {
 	font-family: "Duru Sans", sans-serif;
 }
 
-
+.clear {
+	clear: both;
+}
 
 h1, h2 {
 	font-family: "Prosto One", sans-serif;
@@ -14,6 +16,10 @@ a {
 	color: #0DBCFF;
 }
 
+hr {
+	height: 3px;
+	background: #4FBF31;
+}
 
 .navbar-inverse .navbar-inner {
 	color: #ffffff;
@@ -127,6 +133,27 @@ a {
     background-color: #23A601;
   }
 
+
+/* ====== Home Page Hero Box    ====== */
+
+.hero-unit {
+	
+	background-color: rgba(70,186,39, .75);
+	border-top: 1px solid rgb(70,186,39);
+	color: #fff;
+}
+
+.hero-unit h1 {
+	text-shadow: -1px -2px 2px #ccc;
+}
+
+.hero-unit img {
+	margin: 5px;
+}
+
+
+
+
 /* ====== The Sign-In Form  =====*/
 
 .form-signin {
@@ -134,7 +161,9 @@ a {
     padding: 19px 29px 29px;
     margin: 20px auto 20px auto;
     background-color: #fff;
-    border: 1px solid #e5e5e5;
+    background-image: url('../img/texture.png');
+    background-repeat: repeat;
+    border: 1px solid #ccc;
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
             border-radius: 5px;
@@ -157,4 +186,25 @@ a {
   .form-signin h2 {
   	font-family: "Prosto One", sans-serif;
   }
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+	 .hero-unit h1 {
+  	font-size: 2.5em;
+  }
+  	.hero-unit p {
+  		font-size: .985em;
+  	}
+
+}
+
+@media (max-width: 767px) {
+	  .hero-unit h1 {
+	  	font-size: 2em;
+	  }
+
+	.hero-unit p {
+		font-size: .85em;
+	}
+}
 
