@@ -24,10 +24,10 @@ if (!empty($username) && !empty($password)) {
 
 			$contentPage = 'loggedin';
 			$_SESSION['username'] = $username;
-
+			header('Location: home.php');
 		}
 	}
 
 $view->show('header');
-$view->show($contentPage, $user);
+$view->show($contentPage);
 $view->show('footer');	

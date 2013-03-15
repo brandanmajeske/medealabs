@@ -1,9 +1,10 @@
 <?php
-session_start();
+include('controllers/UserHomeController.php');
 
-include('views/header.inc');
+/*include('views/header.inc');
 
 include('views/loggedin.inc');
 
-include('views/footer.inc');
+include('views/footer.inc');*/
+
 ?>
