@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.15)
 # Database: mldb
-# Generation Time: 2013-03-10 21:55:55 +0000
+# Generation Time: 2013-03-15 01:32:12 +0000
 # ************************************************************
 
 
@@ -89,6 +89,16 @@ CREATE TABLE `users` (
   UNIQUE KEY `UX_name_password` (`password`,`user_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+
+INSERT INTO `users` (`user_id`, `user_name`, `password`, `full_name`, `salt`, `email`)
+VALUES
+	(1,'brandan','bed912739730c294acb13eecfce3385b','Brandan Majeske','jfshskjd','brandan@bmaj.com'),
+	(2,'tester','bed912739730c294acb13eecfce3385b','Tester','jfshskjd','test@test.com');
+
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 

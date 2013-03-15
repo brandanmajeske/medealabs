@@ -43,7 +43,11 @@
               <li><a href="#contact">Contact</a></li>
             </ul>
             <ul class="nav pull-right">
-              <li><a href="auth.php">Sign In</a></li>
+              <?php if(!empty($_SESSION['username'])){
+                  echo '<li><a href="logout.php">Log Out</a></li>';
+              } else {
+                 echo'<li><a href="auth.php">Sign In</a></li>';
+              } ?>          
             </ul>
           </div><!--/.nav-collapse -->
         </div>
