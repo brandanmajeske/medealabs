@@ -2,7 +2,7 @@
 
 
 require_once('inc/db.php');
-//require_once('models/*****.php');
+//require_once('models/*****.php'); // Model for generating dynamic content
 require_once('models/View.php');
 
 $view = new View();
@@ -15,6 +15,5 @@ if(isset($_SESSION['username'])){
 }
 
 $view->show('header');
-echo $welcomemsg;
-echo '<p>Note: Dynamically generated user content will display here</p>';
+$view->show('userhome', $welcomemsg);
 $view->show('footer');	

@@ -3,7 +3,7 @@
 
 include('views/header.inc');
 
-include('views/signup.inc');
+include('views/register.inc');
 
 include('views/footer.inc');
 

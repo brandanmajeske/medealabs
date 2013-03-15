@@ -3,8 +3,8 @@
         <div class="hidden-phone"><img class="pull-left" src="img/logo.png" alt="Media Labs Logo" /></div>
         <h1>Media + Ideas</h1>
         <p>A virtual community of creative people sharing their portfolios and ideas for projects ranging from photography or digital art to programming. Join today and grow your ideas!</p>
-        <p class="visible-phone"><a href="signup.php" class="btn btn-warning">Sign Up &raquo;</a></p>
-        <p class="hidden-phone"><a href="signup.php" class="btn btn-warning btn-large">Sign Up &raquo;</a></p>
+        <p class="visible-phone"><a href="register.php" class="btn btn-warning">Sign Up &raquo;</a></p>
+        <p class="hidden-phone"><a href="register.php" class="btn btn-warning btn-large">Sign Up &raquo;</a></p>
       </div>
 
       <!-- dynamically generated content -->
