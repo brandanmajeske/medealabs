@@ -7,21 +7,18 @@
         <p class="hidden-phone"><a href="signup.php" class="btn btn-warning btn-large">Sign Up &raquo;</a></p>
       </div>
 
-      <!-- Example row of columns -->
+      <!-- dynamically generated content -->
       <div class="row">
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+        <div class="span8">
+          <h2>Recent Activity</h2>
+          <p>This section will contain recent activity posts. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a href="#">View Details &raquo;</a></p>
         </div>
+        <!-- fixed sidemenu for categories of content to view -->
+        <aside>
         <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>Categories</h2>
+          <p>A sub-menu of categories. Content to be determined by users. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper.</p>
         </div>
       </div>
+      </aside>

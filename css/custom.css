@@ -196,13 +196,19 @@ hr {
   	font-size: 2em;
   }
   	.hero-unit p {
-  		font-size: .85em;
+  		font-size: .9em;
   	}
 
   .hero-unit img {
     max-width: 85%;
   }
 
+    h2 {
+    font-size: 1.75em;
+  }
+    p {
+      font-size: .9em;
+  }
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
@@ -218,19 +224,33 @@ hr {
     max-width: 75%;
   }
 
+     h2 {
+    font-size: 1.65em;
+  }
+    p {
+      font-size: .9em;
+  }
+
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-	  .hero-unit h1 {
+	.hero-unit h1 {
 	  	font-size: 1.5em;
 	  }
 
 	.hero-unit p {
-		font-size: .65em;
+		font-size: .75em;
 	}
 
   .hero-unit img {
     max-width: 65%;
+  }
+
+      h2 {
+    font-size: 1.3em;
+  }
+    p {
+      font-size: .85em;
   }
 
 }
