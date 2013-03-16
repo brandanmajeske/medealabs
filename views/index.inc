@@ -12,8 +12,8 @@
         <div class="span8">
           <h2>Recent Activity</h2>
           <p>This section will contain recent activity posts. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p class="visible-desktop"><a href="#">View Details &raquo;</a></p>
-          <p class="hidden-desktop"><a class="btn btn-small btn-info" href="#">View Details &raquo;</a></p>
+          <p class="visible-desktop"><a href="itemview.php?itemview=item">View Details &raquo;</a></p>
+          <p class="hidden-desktop"><a class="btn btn-small btn-info" href="itemview.php?itemview=item">View Details &raquo;</a></p>
         </div>
         <!-- fixed sidemenu for categories of content to view -->
         <aside>

@@ -7,5 +7,5 @@
 	<p class="visible-desktop">Not a registered user? <a href="register.php">Sign Up</a> today!</p>
 	
 	<p><button class="btn btn-warning" type="submit">Sign In</button></p>
-	<p class="hidden-desktop">Not a registered user? <br /> <button class="btn btn-info" href="register.php">Sign Up</button></p>
+	<p class="hidden-desktop">Not a registered user? <br /><a class="btn btn-info" href="register.php">Sign Up</a></p>
 </form>

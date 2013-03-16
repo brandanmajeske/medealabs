@@ -12,4 +12,6 @@ $username = $_SESSION['username'];
 
 <div class="well">
 <p class="muted">Note: Dynamically generated user content will display here</p>
-</div>	
+</div>
+
+<p><a href="itemview.php?itemview=item">View Item Detail &raquo;</a><p>	
