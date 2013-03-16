@@ -1,5 +1,4 @@
 <?php 
-session_start();
 
 require_once('inc/db.php');
 require_once('models/AuthModel.php');
@@ -17,6 +16,11 @@ if(isset($_SESSION['username'])){
 	$user = '';
 	$contentPage = 'signin';
 } 
+
+ /* if username and password entered call the getUserByNamePass function
+ *  then show user as logged and change header to the user home page.
+ */
+
 
 if (!empty($username) && !empty($password)) {
 	$user = $model->getUserByNamePass($username, $password);

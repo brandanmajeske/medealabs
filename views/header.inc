@@ -4,16 +4,11 @@
     <meta charset="utf-8">
     <title>Medea Labs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="A community of creative people sharing ideas">
+    <meta name="author" content="Brandan Majeske">
 
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Duru+Sans|Open+Sans:600italic|Prosto+One|Audiowide' rel='stylesheet' type='text/css'>
     <link href="css/custom.css" rel="stylesheet">
@@ -38,14 +33,16 @@
           <a class="brand" href="index.php">Medea Labs</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="index.php">Home</a></li>
+              <li class="active"><a href="home.php">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
             <ul class="nav pull-right">
               <?php if(!empty($_SESSION['username'])){
+                  // if user is logged in show the logout button
                   echo '<li><a href="logout.php">Log Out</a></li>';
               } else {
+                  // if a user is not logged in show the sign in button
                  echo'<li><a href="auth.php">Sign In</a></li>';
               } ?>          
             </ul>

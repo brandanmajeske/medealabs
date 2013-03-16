@@ -13,7 +13,7 @@ class ItemViewModel {
 	} //end __construct
 
 
-
+	// future home of a function for grabbing a user item from the database and returning it to the controller
 
 
 
