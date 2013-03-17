@@ -3,27 +3,17 @@
 require_once('models/RegisterModel.php');
 require_once('models/View.php');
 
-
+//instantiate the RegisterModel and View class objects
 $model = new RegisterModel();
 $view = new View();
-$view->show('header');
 
-/*$result = array();
-$users = $model->test_connection($result);
-print_r($users);*/
-
+//call the registerCheck method to complete form validation and register user
 $model->registerCheck();
+//if errors occur pass the error array to the form view to display to the user
 $errors = $model->registerCheck('errors');
 
 
-
-$success = isset($_GET['success']) ? $_GET['success'] : null;
-	
-	if (isset($success) === true && empty($error) === true){
-		$view->show('action_list');
-		$view->show('new_user');
-	} else {
-		$view->show('register_form', $errors);
-	}	
-	
-	$view->show('footer');
+//call views for register page
+$view->show('header');
+$view->show('register_form', $errors); 
+$view->show('footer');

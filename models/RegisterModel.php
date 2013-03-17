@@ -86,8 +86,7 @@ class RegisterModel {
 			
 			Database::register_user($register_data);
 			//redirect
-			$_SESSION['username'] = $_POST['user_name'];
-			header('Location: home.php?welcome_new_user');
+			//$_SESSION['username'] = $_POST['user_name'];
 			exit();
 		} 
 

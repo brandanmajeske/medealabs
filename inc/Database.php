@@ -33,7 +33,7 @@ public function user_exists($username) {
 	catch(\PDOException $e){
 		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
 		}
-}
+} // end user_exists
 
 
 public function email_exists($email) {
@@ -54,7 +54,7 @@ public function email_exists($email) {
 		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';		
 		}
 
-}
+} // end email_exists
 
 public function register_user($register_data){
 	$this->db = new \PDO(MY_DSN, MY_USER, MY_PASS);
@@ -81,14 +81,16 @@ public function register_user($register_data){
 		$statement->bindValue("salt", $salt, PDO::PARAM_STR);
 		$statement->bindValue("email", $email, PDO::PARAM_STR);
 		if ($statement->execute()){		
-
-
-			//header('Location: home.php?welcome_new_user');
+			$_SESSION['username'] = $user_name;
+			header('Location: home.php?welcome');
 			}
 		}
 	catch(\PDOException $e){
 		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
 	}
-}
+} // end register_user
+
+
+
 
 }
