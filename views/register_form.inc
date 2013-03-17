@@ -1,6 +1,19 @@
+<?php 
+
+	$errors = $data;
+	
+	if(empty($errors) === false){
+		echo '<div class="alert alert-error"><ul>';
+		foreach($errors as $error){
+			echo '<li>'.$error.'</li>';
+		}
+		echo '</ul></div>';
+	}
+?>
+
+
 <form action="" method="post" class="form-signin">
 	<h2>Register</h2>
-	<p>Please fill in all fields below.</p>
 
 	<label>Username:</label>
 	<input type="text" name="user_name" <?php if(isset($_POST['user_name']) === true ) {echo 'value="'.strip_tags($_POST['user_name']).'"';} ?> />

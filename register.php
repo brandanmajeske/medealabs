@@ -1,11 +1,6 @@
 <?php 
-//session_start();
+session_start();
 
-include('views/header.inc');
-
-include('views/register.inc');
-
-include('views/footer.inc');
-
+include('controllers/RegisterController.php');
 
 ?>
