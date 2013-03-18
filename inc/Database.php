@@ -90,7 +90,62 @@ public function register_user($register_data){
 	}
 } // end register_user
 
+public function test_image_uploader {
+	$this->db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
+	$image_data = file_get_contents($filename);
+	$size = getimagesize($filename);
 
+	$statement = $this->db->prepare("
+		INSERT INTO test_imageblob ( image_type, image, image_size, image_cat, image_name) 
+		VALUES ( :image_type, :image, :image_size, :image_cat, :image_name);
+		");
+	try {
+		$statement->bindValue("image_type", $image_type, PDO::PARAM_STR);
+		$statement->bindValue("user_name", $image, PDO::PARAM_STR);
+		$statement->bindValue("user_name", $image_size, PDO::PARAM_STR);
+		$statement->bindValue("user_name", $image_cat, PDO::PARAM_STR);
+		$statement->bindValue("user_name", $image_name, PDO::PARAM_STR);
+		if ($statement->execute()){		
+			
+			// some code here
+		}
+	}// end try
+	catch(\PDOException $e){
+		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+	} // end catch
+
+}// end test_image_uploader
+ /*
+create table testblob (
+    image_id        tinyint(3)  not null default '0',
+    image_type      varchar(25) not null default '',
+    image           blob        not null,
+    image_size      varchar(25) not null default '',
+    image_ctgy      varchar(25) not null default '',
+    image_name      varchar(50) not null default ''
+);
+ 
+$imgData = file_get_contents($filename);
+$size = getimagesize($filename);
+mysql_connect("localhost", "$username", "$password");
+mysql_select_db ("$dbname");
+$sql = "INSERT INTO testblob
+    ( image_id , image_type ,image, image_size, image_name)
+    VALUES
+    ('', '{$size['mime']}', '{$imgData}', '{$size[3]}', 
+     '{$_FILES['userfile']['name']}')";
+mysql_query($sql);
+You can display an image from the database in a web page with:
+
+$link = mysql_connect("localhost", "username", "password");
+mysql_select_db("testblob");
+$sql = "SELECT image FROM testblob WHERE image_id=0";
+$result = mysql_query("$sql");
+header("Content-type: image/jpeg");
+echo mysql_result($result, 0);
+mysql_close($link);
+ */
 
 }
