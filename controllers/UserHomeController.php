@@ -2,10 +2,11 @@
 
 
 require_once('inc/db.php');
-//require_once('models/*****.php'); // Model for generating dynamic content
+require_once('models/DisplayProjectsModel.php'); // Model for generating dynamic content
 require_once('models/View.php');
 
 $view = new View();
+$model = new DisplayProjectsModel();
 
 /* check if user is either a new user or existing user and signed in
  *  change welcome message accordingly
@@ -21,6 +22,8 @@ if($new_user){
 	$welcomemsg = "<p>Now that you're logged in, what would you like to do?</p>";
 }
 
+$projects = $model->display_projects();
+
 $view->show('header');
-$view->show('userhome', $welcomemsg);
+$view->show('userhome', $projects, $welcomemsg);
 $view->show('footer');	

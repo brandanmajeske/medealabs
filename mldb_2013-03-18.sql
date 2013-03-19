@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.15)
 # Database: mldb
-# Generation Time: 2013-03-18 11:35:53 +0000
+# Generation Time: 2013-03-19 04:03:00 +0000
 # ************************************************************
 
 
@@ -80,8 +80,9 @@ DROP TABLE IF EXISTS `projects`;
 
 CREATE TABLE `projects` (
   `proj_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `proj_name` varchar(32) DEFAULT NULL,
-  `proj_description` text,
+  `proj_title` varchar(50) DEFAULT NULL,
+  `proj_cat` varchar(50) DEFAULT NULL,
+  `proj_desc` text,
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`proj_id`),
   KEY `user_id` (`user_id`),
@@ -91,9 +92,14 @@ CREATE TABLE `projects` (
 LOCK TABLES `projects` WRITE;
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
 
-INSERT INTO `projects` (`proj_id`, `proj_name`, `proj_description`, `user_id`)
+INSERT INTO `projects` (`proj_id`, `proj_title`, `proj_cat`, `proj_desc`, `user_id`)
 VALUES
-	(1,'Test Project','A test description for the test project in the project table',1);
+	(1,'Leon\'s Project','Code','A robust code project.',16),
+	(2,'Another project','Art','Another Project goes here',1),
+	(3,'Super Project','Painting','Super project text description',1),
+	(4,'Trigger\'s first project','coding','some code goes here',17),
+	(5,'Trigger\'s Second Project','Photography','Photos are cool.',17),
+	(6,'The Test Project','Test Project 1','Here is a new test project.',2);
 
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -144,7 +150,8 @@ VALUES
 	(12,'stan','c46b45be5e0bdd0983687f4749c6e822','stan getz','1363553830','stan@getz.net'),
 	(13,'stanley','f6aff9827c571f5edea9cbd0da31cd78','stan getz','1363553867','stanley@getzerg.net'),
 	(14,'conrad','7385bdfc08966c6e25070164e1f05ced','connie jones','1363554084','con@jones.ru'),
-	(15,'leo','346440ce717fd249812461a827c8d2ef','leo lion','1363554263','leo@llll.com');
+	(16,'leon','b4bb2ae3ef6bfc48e408876ecd9baa93','leon lion','1363660963','leon@lion.com'),
+	(17,'trigger','2f4e51401c32a9621ac10000c434313c','trigger horse','1363665417','th@horse.com');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;

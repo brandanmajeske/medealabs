@@ -2,7 +2,7 @@
 
 class View {
 
-	public function show($template, $data = array()) {
+	public function show($template, $data = array(), $msg = null) {
 		$templatePath = "views/${template}.inc";
 		if (file_exists($templatePath)){
 			

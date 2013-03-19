@@ -1,6 +1,8 @@
 <?php 
-$welcomemsg = $data;
+$welcomemsg = $msg;
 $username = $_SESSION['username'];
+$rows = $data;
+
 ?>
 
 <!-- header -->
@@ -29,6 +31,15 @@ $username = $_SESSION['username'];
 <div class="span10">
 <div class="well">
 <p class="muted">Note: Dynamically generated user content will display here</p>
+<?php 
+	
+	foreach($rows as $num => $row){
+		$proj_title = $row['proj_title'];
+		echo $proj_title. '<br />';
+	}	
+
+?>
+
 </div>
 
 <p><a href="itemview.php?itemview=item">View Item Detail &raquo;</a><p>	</div>

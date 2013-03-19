@@ -3,17 +3,19 @@
 require_once 'db.php';
 
 
+// Helpers //
+
 class Database {
 
 
-private $db;
-		
+//private $db;
+ private $db_error = '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: ';	
 
-public function __construct($dsn, $user, $pass) {
+/*public function __construct($dsn, $user, $pass) {
 		$this->db = new \PDO($dsn, $user, $pass);
 		$this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 	
-	} // END __construct
+	} // END __construct*/
 
 public static function user_exists($username) {
 
@@ -31,7 +33,7 @@ public static function user_exists($username) {
 			}
 		}
 	catch(\PDOException $e){
-		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+		echo $db_error.$e->getMessage().'</div>';
 		}
 } // end user_exists
 
@@ -146,6 +148,28 @@ public static function new_project($proj_data){
 
 
 }// end new_project
+
+
+public static function get_projects($user_id){
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+	$user_id = $user_id;
+
+	$statement = $db->prepare("
+			SELECT `proj_title`, `proj_cat`, `proj_desc`, `user_name`
+			FROM projects RIGHT OUTER JOIN users
+			on users.user_id = projects.user_id
+			WHERE projects.user_id = :user_id;
+		");
+	$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
+	if($statement->execute()){
+			$rows = $statement->fetchAll(\PDO::FETCH_ASSOC);
+			return $rows;
+		}
+
+} // end get_projects
+
+
 
 
 public function test_image_uploader() {
