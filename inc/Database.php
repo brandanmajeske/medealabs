@@ -15,11 +15,11 @@ public function __construct($dsn, $user, $pass) {
 	
 	} // END __construct
 
-public function user_exists($username) {
+public static function user_exists($username) {
 
-	$this->db = new \PDO(MY_DSN, MY_USER, MY_PASS);
-	$this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-	$statement = $this->db->prepare("
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+	$statement = $db->prepare("
 		SELECT * FROM users WHERE user_name = :user_name;
 		");
 
@@ -36,11 +36,11 @@ public function user_exists($username) {
 } // end user_exists
 
 
-public function email_exists($email) {
+public static function email_exists($email) {
 
-	$this->db = new \PDO(MY_DSN, MY_USER, MY_PASS);
-	$this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-	$statement = $this->db->prepare("
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+	$statement = $db->prepare("
 		SELECT * FROM users WHERE email ='$email';
 		");
 
@@ -56,9 +56,9 @@ public function email_exists($email) {
 
 } // end email_exists
 
-public function register_user($register_data){
-	$this->db = new \PDO(MY_DSN, MY_USER, MY_PASS);
-	$this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+public static function register_user($register_data){
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 	
 	$user_name =  strtolower($register_data['user_name']);
 	$salt = $register_data['salt'];
@@ -69,7 +69,7 @@ public function register_user($register_data){
 	$fields = '`'. implode('`, `', array_keys($register_data)) . '`';
 
 
-	$statement = $this->db->prepare("
+	$statement = $db->prepare("
 		INSERT INTO users ($fields) 
 		VALUES (:user_name, :password, :full_name, :salt, :email);
 		");
@@ -90,7 +90,65 @@ public function register_user($register_data){
 	}
 } // end register_user
 
-public function test_image_uploader {
+public static function user_id_query($user_name){
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+	$user_name = $user_name;
+	// get the user id for the user currently signed in
+
+	$statement = $db->prepare("
+		SELECT user_id AS id 
+		FROM users 
+		WHERE (user_name = :user_name);
+		");
+	
+	try {
+		$statement->bindValue("user_name", $user_name, PDO::PARAM_STR);
+		if($statement->execute()){
+			$row = $statement->fetchAll(\PDO::FETCH_ASSOC);
+			return $row[0]['id'];
+		}
+	}
+	catch(\PDOException $e){
+		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+	}
+}// end user_id_query
+
+public static function new_project($proj_data){
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+	$fields = '`'. implode('`, `', array_keys($proj_data)) . '`';
+	$proj_title = $proj_data['proj_title'];
+	$proj_cat = $proj_data['proj_cat'];
+	$proj_desc = $proj_data['proj_desc'];
+	$user_id = $proj_data['user_id'];
+	$statement = $db->prepare("
+		INSERT INTO projects ($fields) 
+		VALUES (:proj_title, :proj_cat, :proj_desc, :user_id);
+		");
+
+
+	try {
+		$statement->bindValue("proj_title", $proj_title, PDO::PARAM_STR);
+		$statement->bindValue("proj_cat", $proj_cat, PDO::PARAM_STR);
+		$statement->bindValue("proj_desc", $proj_desc, PDO::PARAM_STR);
+		$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
+		if ($statement->execute()){		
+			//$_SESSION['username'] = $user_name;
+			header('Location: home.php?most_recent_activity');
+			}
+		}
+	catch(\PDOException $e){
+		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+	}
+
+
+}// end new_project
+
+
+public function test_image_uploader() {
 	$this->db = new \PDO(MY_DSN, MY_USER, MY_PASS);
 	$this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
@@ -126,7 +184,7 @@ create table testblob (
     image_ctgy      varchar(25) not null default '',
     image_name      varchar(50) not null default ''
 );
- 
+
 $imgData = file_get_contents($filename);
 $size = getimagesize($filename);
 mysql_connect("localhost", "$username", "$password");

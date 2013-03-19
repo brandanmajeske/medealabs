@@ -10,6 +10,10 @@ $view = new View();
 /* check if user is either a new user or existing user and signed in
  *  change welcome message accordingly
 */
+if(!isset($_SESSION['username'])){
+	header('Location: auth.php');
+}
+
 $new_user = (isset($_GET['welcome']) && isset($_SESSION['username']));
 if($new_user){
 	$welcomemsg = "<p>Welcome to your Home Page! What would you like to do?</p>";
