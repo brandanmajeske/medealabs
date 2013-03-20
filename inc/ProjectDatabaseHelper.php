@@ -53,12 +53,12 @@ public static function new_post($post_data){
 	$user_id = $post_data['user_id'];
 	$proj_id = $post_data['proj_id'];
 	$post_date = $post_date['post_date'];
-	//$image_id = null;
+	$post_file = $post_data['post_file'];
 	$fields = '`'. implode('`, `', array_keys($post_data)) . '`';
 
 	$statement = $db->prepare("
 		INSERT INTO posts ($fields) 
-		VALUES (:post_title, :post_text, :proj_id, :user_id, CURRENT_TIMESTAMP);
+		VALUES (:post_title, :post_text, :proj_id, :user_id, CURRENT_TIMESTAMP, :post_file);
 		");
 
 
@@ -67,6 +67,7 @@ public static function new_post($post_data){
 		$statement->bindValue("post_text", $post_text, PDO::PARAM_STR);
 		$statement->bindValue("proj_id", $proj_id, PDO::PARAM_STR);
 		$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
+		$statement->bindValue("post_file", $post_file);
 		if ($statement->execute()){		
 			//$_SESSION['username'] = $user_name;
 			header('Location: project.php?id='.$proj_id);
@@ -87,7 +88,7 @@ public static function show_posts($proj_id){
 
 	$proj_id = $proj_id;
 	$statement = $db->prepare("
-			SELECT posts.post_date, posts.post_id, posts.post_title, posts.post_text, posts.user_id, projects.proj_id, users.user_name
+			SELECT posts.post_file, posts.post_date, posts.post_id, posts.post_title, posts.post_text, posts.user_id, projects.proj_id, users.user_name
 			FROM posts
     		JOIN projects
        		ON projects.proj_id = posts.proj_id

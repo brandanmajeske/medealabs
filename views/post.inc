@@ -12,18 +12,23 @@
 ?>
 
 
-<form action="" method="POST" class="form-project">
-<h2>What about it...</h2>
-	<p>
+<form action="" method="POST" class="form-project" enctype="multipart/form-data">
+<h2>Contribute to Project</h2>
+	<p> 
 		<label for="post_title">Post Title:</label>
 		<input type="text" name="post_title" id="post_title" <?php if(isset($_POST['post_title']) === true ) {echo 'value="'.strip_tags($_POST['post_title']).'"';} ?>/>
-		
+	</p>
+		<p> Want to add an image?
+		<label for "images"> Choose a file to upload: </label>
+		<input type="file" name="images" id="images" />
+	</p>
+	<p>
 		<label for="post_text">Post Body:</label>
 		<textarea name="post_text" id="post_text"><?php if(isset($_POST['post_text']) === true ) {echo strip_tags($_POST['post_text']); } ?></textarea>
 		<br />
 		<input type="submit" class="btn btn-warning" value="Submit">
-
 	</p>
+	
 </form>
 
 

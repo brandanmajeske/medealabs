@@ -18,14 +18,15 @@ $rows = $data;
 <div class="row-fluid">
 <div class="span2">
 <!--Sidebar content-->
+<div> <!-- user menu -->
 <h4 class="muted">User Menu</h4>
 <ul class="muted">
 	<li><a href="create_project.php">Create Project</a></li>
-	<li><a href="#">menu item</a></li>
-	<li><a href="#">menu item</a></li>
-	<li><a href="#">menu item</a></li>
+	<li><a href="#">Search Projects</a></li>
+	<li><a href="#">Something Else</a></li>
+	<li><a href="#">Edit Your Profile</a></li>
 </ul>
-
+</div> <!-- end user menu -->
 
 </div>
 <div class="span10">

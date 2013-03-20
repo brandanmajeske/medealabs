@@ -26,6 +26,7 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 
 
 <div class="posts">
+
 <?php 
 	$i = 0;
 	foreach($posts as $post){
@@ -34,10 +35,16 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 		$post_author = ucfirst($post['user_name']);
 		$timestamp = strtotime($post['post_date']);
 		$post_date = date('M dS Y - h:i A', $timestamp);
+		$post_file = $post['post_file'];
 		$i++;
 		echo '<div class="single_post">
 				<div class="post_header">
 				<h4>'.$post_title.'</h4></div>';
+		echo '<div class="post_container">';		
+		if(!is_null($post_file)){
+			echo '<img class="post_image" src="uploads/'.$post_file.'" alt="'.$post_title.' image" />';
+		}
+
 		echo '<p class="post_text">'.$post_text.'</p>';
 		echo '<p class="muted post_text">Author: '.$post_author.'<br/>Posted on: '.$post_date.'</p></div>';
 	}
@@ -72,4 +79,5 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 
 
 ?>
+</div><!-- end post_container -->
 </div><!-- end posts -->
