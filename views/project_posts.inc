@@ -1,5 +1,7 @@
 <?php
  
+$posts = $data2;
+
 $project = $data;
 $proj_id = $project['proj_id'];
 $proj_title = $project['proj_title'];
@@ -22,13 +24,23 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 <p><a href="post.php?proj_id=<?php echo $proj_id; ?>">Contribute to Project</a><p>
 <!-- Posts involving this project go here. -->
 
-<div class="post">
-<div class="post-header">
-	<h3>Post Title<h3>
-</div>
-	<p>Post body text .... maybe an image goes here.</p>
-	<p class="muted">Author: somebody</p>
-</div> <!-- end post -->
+
+
+<?php 
+	
+	foreach($posts as $post){
+		$post_title = $post['post_title'];
+		$post_text = $post['post_text'];
+		$post_author = $post['user_name'];
+
+		echo '<div class="post">
+				<div class="post-header">
+				<h4>'.$post_title.'</h4></div>';
+		echo '<p>'.$post_text.'</p>';
+		echo '<p class="muted">Author: '.$post_author.'</p></div>';
+	}
+?>
+<!-- end posts -->
 
 <!-- future use of the accordion for project posts 
 

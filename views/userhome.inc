@@ -1,5 +1,5 @@
 <?php 
-$welcomemsg = $msg;
+$welcomemsg = $data2;
 $username = $_SESSION['username'];
 $rows = $data;
 
