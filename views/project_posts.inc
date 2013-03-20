@@ -27,48 +27,49 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 
 <div class="posts">
 <?php 
-	
+	$i = 0;
 	foreach($posts as $post){
 		$post_title = ucwords($post['post_title']);
 		$post_text = $post['post_text'];
 		$post_author = ucfirst($post['user_name']);
-
+		$timestamp = strtotime($post['post_date']);
+		$post_date = date('M dS Y - h:i A', $timestamp);
+		$i++;
 		echo '<div class="single_post">
 				<div class="post_header">
 				<h4>'.$post_title.'</h4></div>';
 		echo '<p class="post_text">'.$post_text.'</p>';
-		echo '<p class="muted post_text">Author: '.$post_author.'</p></div>';
+		echo '<p class="muted post_text">Author: '.$post_author.'<br/>Posted on: '.$post_date.'</p></div>';
 	}
+
+
+	//echo '<div class="accordion" id="post_accordion">';
+
+	/*$i = 0;
+	foreach($posts as $post){
+		$post_title = ucwords($post['post_title']);
+		$post_text = $post['post_text'];
+		$post_author = ucfirst($post['user_name']);
+		$i++;
+		echo '<div class="accordion" id="post_accordion">
+		 		<div class="accordion-group">
+    			<div class="accordion-heading post_header">
+      			<a class="accordion-toggle" data-toggle="collapse" data-parent="#post_accordion" href="#'.$i.'">
+				'.$post_title.'
+				</a>
+				</div>
+				<div id="'.$i.'" class="accordion-body collapse in">
+					<div class="accordion-inner">
+					<p>'.$post_text.'</p>
+					<p class="muted post_text">Author: '.$post_author.'</p>
+						</div>
+					</div>
+				</div>
+				</div>';
+
+		}// end foreach
+	//echo '</div>'; // end accordion*/
+
+
 ?>
 </div><!-- end posts -->
-
-<!-- future use of the accordion for project posts 
-
-<div class="accordion" id="post_accordion">
-	<div class="accordion-group">
-	<div class="accordion-heading">
-	<a class="accordion-toggle" data-toggle="collapse" data-parent="#post_accordion" href="#collapseOne">
-	Collapsible Group Item #1
-	</a>
-	</div>
-	<div id="collapseOne" class="accordion-body collapse in">
-	<div class="accordion-inner">
-	Anim pariatur cliche...
-	</div>
-	</div>
-</div>
-<div class="accordion-group">
-	<div class="accordion-heading">
-	<a class="accordion-toggle" data-toggle="collapse" data-parent="#post_accordion" href="#collapseTwo">
-	Collapsible Group Item #2
-	</a>
-	</div>
-	<div id="collapseTwo" class="accordion-body collapse">
-	<div class="accordion-inner">
-	Anim pariatur cliche...
-	</div>
-	</div>
-	</div>
-</div>
-
--->

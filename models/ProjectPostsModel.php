@@ -48,7 +48,8 @@ class ProjectPostsModel {
 				'post_title' => $_POST['post_title'],
 				'post_text' => $_POST['post_text'],
 				'proj_id' => $proj_id,
-				'user_id' => $user_id
+				'user_id' => $user_id,
+				'post_date' => ''
 				);
 
 			

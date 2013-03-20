@@ -20,7 +20,8 @@ public static function show_project($proj_id){
 			SELECT `proj_id`, `proj_title`, `proj_cat`, `proj_desc`, `user_name`
 			FROM projects RIGHT OUTER JOIN users
 			on users.user_id = projects.user_id
-			WHERE projectS.proj_id = :proj_id;
+			WHERE projectS.proj_id = :proj_id
+			ORDER BY `proj_id` DESC;
 		");
 	
 	try{
@@ -51,12 +52,13 @@ public static function new_post($post_data){
 	$post_text = $post_data['post_text'];
 	$user_id = $post_data['user_id'];
 	$proj_id = $post_data['proj_id'];
+	$post_date = $post_date['post_date'];
 	//$image_id = null;
 	$fields = '`'. implode('`, `', array_keys($post_data)) . '`';
 
 	$statement = $db->prepare("
 		INSERT INTO posts ($fields) 
-		VALUES (:post_title, :post_text, :proj_id, :user_id);
+		VALUES (:post_title, :post_text, :proj_id, :user_id, CURRENT_TIMESTAMP);
 		");
 
 
@@ -85,13 +87,15 @@ public static function show_posts($proj_id){
 
 	$proj_id = $proj_id;
 	$statement = $db->prepare("
-			SELECT posts.post_title, posts.post_text, posts.user_id, projects.proj_id, users.user_name
+			SELECT posts.post_date, posts.post_id, posts.post_title, posts.post_text, posts.user_id, projects.proj_id, users.user_name
 			FROM posts
     		JOIN projects
        		ON projects.proj_id = posts.proj_id
     		JOIN users
        		ON users.user_id = posts.user_id
-   			WHERE projects.proj_id = :proj_id;
+   			WHERE projects.proj_id = :proj_id
+   			ORDER BY `post_id` DESC;
+
 		");
 	
 	try{
