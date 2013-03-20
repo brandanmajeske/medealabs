@@ -17,12 +17,12 @@
 	<p> 
 		<label for="post_title">Post Title:</label>
 		<input type="text" name="post_title" id="post_title" <?php if(isset($_POST['post_title']) === true ) {echo 'value="'.strip_tags($_POST['post_title']).'"';} ?>/>
-	</p>
-		<p> Want to add an image?
-		<label for "images"> Choose a file to upload: </label>
+	
+	<div class="file_upload">
+		<label for "images"><i class="icon-upload icon-white"></i> Choose a file to upload: </label>
 		<input type="file" name="images" id="images" />
-	</p>
-	<p>
+		</div>
+	
 		<label for="post_text">Post Body:</label>
 		<textarea name="post_text" id="post_text"><?php if(isset($_POST['post_text']) === true ) {echo strip_tags($_POST['post_text']); } ?></textarea>
 		<br />

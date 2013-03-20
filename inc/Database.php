@@ -127,6 +127,9 @@ public static function new_project($proj_data){
 	$proj_cat = $proj_data['proj_cat'];
 	$proj_desc = $proj_data['proj_desc'];
 	$user_id = $proj_data['user_id'];
+	$proj_date = $proj_date['proj_date'];
+	$proj_file = $proj_data['proj_file'];
+	
 	$statement = $db->prepare("
 		INSERT INTO projects ($fields) 
 		VALUES (:proj_title, :proj_cat, :proj_desc, :user_id);

@@ -20,12 +20,6 @@ class ProjectPostsModel {
 		$proj_id = $proj_id;
 		$errors = array();
 
-		//post_title
-		//post_text
-		//proj_id
-		//user_id
-		//image_id
-
 		if(empty($_POST) === false){
 			$required_fields = array('post_title', 'post_text');
 
@@ -41,12 +35,17 @@ class ProjectPostsModel {
 
 		//if errors are empty 
 		if(empty($_POST) === false && empty($errors) === true){
+			
 
 			$tmp_name = $_FILES['images']['tmp_name'];
 			$uploadfilename = $_FILES['images']["name"];
 			$saveddate=date("mdy-Hms");
 			$newfilename = "./uploads/".basename($saveddate."-".$uploadfilename);
-			$post_file = basename($saveddate."-".$uploadfilename);
+			$post_file ='';
+			if($_FILES['images']['name']){
+				echo '<pre>',print_r($_FILES),'</pre>';
+				$post_file = basename($saveddate."-".$uploadfilename);
+			}
 
 			move_uploaded_file($tmp_name, $newfilename);
 
@@ -61,7 +60,7 @@ class ProjectPostsModel {
 				'post_file' => $post_file
 				);
 
-			echo '<pre>',print_r($post_data),'</pre>';
+			//echo '<pre>',print_r($post_data),'</pre>';
 			ProjectDatabaseHelper::new_post($post_data);
 
 		}

@@ -21,5 +21,4 @@ $view->show('post');
 $view->show('footer');
 
 
-
 ?>

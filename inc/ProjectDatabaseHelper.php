@@ -9,6 +9,42 @@ class ProjectDatabaseHelper {
 
 private $db;
 
+public static function new_project($proj_data){
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+	$fields = '`'. implode('`, `', array_keys($proj_data)) . '`';
+	$proj_title = $proj_data['proj_title'];
+	$proj_cat = $proj_data['proj_cat'];
+	$proj_desc = $proj_data['proj_desc'];
+	$user_id = $proj_data['user_id'];
+	$proj_date = $proj_date['proj_date'];
+	$proj_file = $proj_data['proj_file'];
+	
+	$statement = $db->prepare("
+		INSERT INTO projects ($fields) 
+		VALUES (:proj_title, :proj_cat, :proj_desc, :user_id, CURRENT_TIMESTAMP, :proj_file);
+		");
+
+
+	try {
+		$statement->bindValue("proj_title", $proj_title, PDO::PARAM_STR);
+		$statement->bindValue("proj_cat", $proj_cat, PDO::PARAM_STR);
+		$statement->bindValue("proj_desc", $proj_desc, PDO::PARAM_STR);
+		$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
+		$statement->bindValue("proj_file", $proj_file, PDO::PARAM_STR);
+		if ($statement->execute()){		
+			//$_SESSION['username'] = $user_name;
+			header('Location: home.php?most_recent_activity');
+			}
+		}
+	catch(\PDOException $e){
+		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+	}
+
+
+}// end new_project
+
 public static function show_project($proj_id){
 	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
 	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
@@ -17,7 +53,7 @@ public static function show_project($proj_id){
 	$proj_id = $proj_id;
 
 	$statement = $db->prepare("
-			SELECT `proj_id`, `proj_title`, `proj_cat`, `proj_desc`, `user_name`
+			SELECT `proj_file`, `proj_date`, `proj_id`, `proj_title`, `proj_cat`, `proj_desc`, `user_name`
 			FROM projects RIGHT OUTER JOIN users
 			on users.user_id = projects.user_id
 			WHERE projectS.proj_id = :proj_id
@@ -67,7 +103,7 @@ public static function new_post($post_data){
 		$statement->bindValue("post_text", $post_text, PDO::PARAM_STR);
 		$statement->bindValue("proj_id", $proj_id, PDO::PARAM_STR);
 		$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
-		$statement->bindValue("post_file", $post_file);
+		$statement->bindValue("post_file", $post_file, PDO::PARAM_STR);
 		if ($statement->execute()){		
 			//$_SESSION['username'] = $user_name;
 			header('Location: project.php?id='.$proj_id);

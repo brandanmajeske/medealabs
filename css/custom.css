@@ -133,6 +133,27 @@ hr {
     background-color: #23A601;
   }
 
+/* ========= File Inputs ========= */
+
+.file_upload {
+  display: block;
+  max-width: 35%;
+  min-width: 300px;
+  padding: 2%;
+  color: #fff;
+  background: url('../img/blue_texture.png') repeat;
+  border: 5px solid white;
+
+  
+}
+
+.file_upload input {
+  line-height: 1em;
+  max-width: 200px;
+  overflow: hidden;
+}
+
+
 /* ========= Post  ========*/
   
 .posts{  
@@ -233,7 +254,7 @@ hr {
 .form-project {
     max-width: 80%;
     min-width: 300px;
-    padding: 19px 29px 29px;
+    padding: 19px 38px 29px 19px;
     margin: 20px auto 20px auto;
     background-color: #fff;
     background-image: url('../img/texture.png');
