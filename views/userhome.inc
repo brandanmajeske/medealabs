@@ -24,7 +24,7 @@ $rows = $data;
 	<li><a href="create_project.php">Create Project</a></li>
 	<li><a href="#">Search Projects</a></li>
 	<li><a href="#">Something Else</a></li>
-	<li><a href="#">Edit Your Profile</a></li>
+	<li><a href="profile.php">Edit Your Profile</a></li>
 </ul>
 </div> <!-- end user menu -->
 

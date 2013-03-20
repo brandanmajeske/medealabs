@@ -1,3 +1,4 @@
+<div>
 <?php
  
 $posts = $data2;
@@ -71,8 +72,8 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 	echo '</div><!-- end posts -->';
 	} // end if
 
-
+	
 		
 ?>
 
-
+</div>
