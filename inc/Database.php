@@ -1,15 +1,16 @@
 <?php 
 
-require_once 'db.php';
+require_once 'inc/db.php';
 
 
 // Helpers //
 
 class Database {
 
+//private $db;
 
 //private $db;
- private $db_error = '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: ';	
+private $db_error = '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: ';	
 
 /*public function __construct($dsn, $user, $pass) {
 		$this->db = new \PDO($dsn, $user, $pass);
@@ -22,7 +23,7 @@ public static function user_exists($username) {
 	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
 	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 	$statement = $db->prepare("
-		SELECT * FROM users WHERE user_name = :user_name;
+		SELECT * FROM sers WHERE user_name = :user_name;
 		");
 
 	try {
@@ -156,7 +157,7 @@ public static function get_projects($user_id){
 	$user_id = $user_id;
 
 	$statement = $db->prepare("
-			SELECT `proj_title`, `proj_cat`, `proj_desc`, `user_name`
+			SELECT `proj_id`, `proj_title`, `proj_cat`, `proj_desc`, `user_name`
 			FROM projects RIGHT OUTER JOIN users
 			on users.user_id = projects.user_id
 			WHERE projects.user_id = :user_id;

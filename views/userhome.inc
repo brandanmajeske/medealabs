@@ -35,7 +35,8 @@ $rows = $data;
 	
 	foreach($rows as $num => $row){
 		$proj_title = $row['proj_title'];
-		echo $proj_title. '<br />';
+		$proj_id = $row['proj_id'];
+		echo '<a href="project.php?id='.$proj_id.'">'.$proj_title. '</a><br />';
 	}	
 
 ?>
