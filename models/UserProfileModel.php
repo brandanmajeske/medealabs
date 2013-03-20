@@ -51,13 +51,58 @@ class UserProfileModel {
 	// function to check if user already has a profile
 	public function check_for_profile(){
 
-				//get username for logged in user
-				$user_name = $_SESSION['username'];
-				// get user id for the logged in user
-				$user_id = Database::user_id_query($user_name);
-				//call static fucntion to check if user profile already exists
-				UserProfileHelper::check_profile($user_id);
-
+		//get username for logged in user
+		$user_name = $_SESSION['username'];
+		// get user id for the logged in user
+		$user_id = Database::user_id_query($user_name);
+		//call static fucntion to check if user profile already exists
+		UserProfileHelper::check_profile($user_id);
 	}
+
+	public function get_profile($user_profile_data){
+		//get username for logged in user
+		$user_name = $_SESSION['username'];
+		// get user id for the logged in user
+		$user_id = Database::user_id_query($user_name);
+		//call static fucntion to get contents of user profile
+		$user_profile_data = UserProfileHelper::get_user_profile($user_id);
+		return $user_profile_data;
+	}
+
+	public function update_profile(){
+		// --  error checking  -- //
+		$errors = array();
+				
+
+				if(empty($_POST) === false){
+					$required_fields = array('user_bio');
+
+
+					foreach($_POST as $key=>$value) {
+						if (empty($value) && in_array($key, $required_fields) === true) {
+							$errors[] = 'Please fill out all fields';
+					
+							return $errors;
+							break;
+						}
+					}
+				}
+		// if no errors found add user_profile data to the database.
+				if(empty($errors) === true){
+
+					//get username for logged in user
+					$user_name = $_SESSION['username'];
+					// get user id for the logged in user
+					$user_id = Database::user_id_query($user_name);
+					$user_bio = isset($_POST['user_bio'])? $_POST['user_bio'] : null;
+					// put profile data into array 
+					$user_profile_data = array(
+						'user_bio' => $user_bio,
+						'user_id' => $user_id,
+						);
+					//call static function to insert profile data array into the database
+					UserProfileHelper::update_profile($user_profile_data);
+	}
+}// end update_profile
 
 }
