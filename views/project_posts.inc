@@ -25,22 +25,22 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 <!-- Posts involving this project go here. -->
 
 
-
+<div class="posts">
 <?php 
 	
 	foreach($posts as $post){
-		$post_title = $post['post_title'];
+		$post_title = ucwords($post['post_title']);
 		$post_text = $post['post_text'];
-		$post_author = $post['user_name'];
+		$post_author = ucfirst($post['user_name']);
 
-		echo '<div class="post">
-				<div class="post-header">
+		echo '<div class="single_post">
+				<div class="post_header">
 				<h4>'.$post_title.'</h4></div>';
-		echo '<p>'.$post_text.'</p>';
-		echo '<p class="muted">Author: '.$post_author.'</p></div>';
+		echo '<p class="post_text">'.$post_text.'</p>';
+		echo '<p class="muted post_text">Author: '.$post_author.'</p></div>';
 	}
 ?>
-<!-- end posts -->
+</div><!-- end posts -->
 
 <!-- future use of the accordion for project posts 
 
