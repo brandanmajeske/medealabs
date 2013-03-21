@@ -50,14 +50,18 @@ class UserProfileModel {
 
 	// function to check if user already has a profile
 	public function check_for_profile(){
-
+		
 		//get username for logged in user
 		$user_name = $_SESSION['username'];
 		// get user id for the logged in user
 		$user_id = Database::user_id_query($user_name);
 		//call static fucntion to check if user profile already exists
-		UserProfileHelper::check_profile($user_id);
+		$result = UserProfileHelper::check_profile($user_id);
+		//var_dump($result);
+		return $result;
 	}
+
+
 
 	public function get_profile($user_profile_data){
 		//get username for logged in user
@@ -68,6 +72,8 @@ class UserProfileModel {
 		$user_profile_data = UserProfileHelper::get_user_profile($user_id);
 		return $user_profile_data;
 	}
+
+
 
 	public function update_profile(){
 		// --  error checking  -- //

@@ -14,7 +14,7 @@ if(empty($errors) === false){
 
 ?>
 
-<h2>Your Profile</h2>
+<h2>Edit Your Profile</h2>
 	<p>
 		
 		<div class="file_upload">

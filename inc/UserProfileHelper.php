@@ -42,16 +42,23 @@ public static function check_profile($user_id){
 	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
 	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 	$user_id = $user_id;
-
+	//echo $user_id;
 	$statement = $db->prepare("
-		SELECT COUNT(*) 
+		SELECT user_id 
 		FROM user_profiles
-		WHERE `user_id` = :user_id;
+		WHERE user_id = :user_id;
 	");
 	try{
 		$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
 		if($statement->execute()){
+			$rows = $statement->fetch(\PDO::FETCH_BOUND);
+			
+			if($rows != 0){
+				//echo 'Yes there is a profile';
+				return true;
+			}
 		}
+		return false;
 	}
 	catch(\PDOException $e){
 			echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';

@@ -13,7 +13,7 @@
 
 
 <form action="" method="POST" class="form-project" enctype="multipart/form-data">
-<h2>Your Profile</h2>
+<h2>Create Your Profile</h2>
 	<p>
 		
 		<div class="file_upload">
