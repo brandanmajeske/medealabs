@@ -30,9 +30,15 @@ Project Author: <?php echo ucwords($user_name); ?><br />
 Category: <?php echo ucfirst($proj_cat); ?><br />
 Date Created: <?php echo $proj_date; ?><br />
 Description: <?php echo ucfirst($proj_desc); ?></p>
-<span class="clearfix"><span>
-<p class="pull-left"><a class="btn btn-warning" href="post.php?proj_id=<?php echo $proj_id; ?>">Contribute to Project</a><p>
-<span class="clearfix"><span>
+<div class="clearfix">
+	<?php 
+	//check if current user is post author, if true present edit | delete options
+		if(isset($_SESSION['username']) && $_SESSION['username'] == $project['user_name']){
+			echo '<p><a class="label label-info" href="project.php?edit='.$proj_id.'"><i class="icon-edit icon-white"></i> Edit</a>     <a class="label label-important" href="project.php?delete='.$proj_id.'"><i class="icon-trash icon-white"></i> Delete</a></p>';
+		}
+	?>
+</div>
+<p><a class="btn btn-warning" href="post.php?proj_id=<?php echo $proj_id; ?>">Contribute to Project</a><p>
 </div>
 
 <!-- Posts involving this project go here. -->

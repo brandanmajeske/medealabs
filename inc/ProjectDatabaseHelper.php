@@ -77,6 +77,77 @@ public static function show_project($proj_id){
 }// end get_project
 
 
+public static function update_project($proj_data){
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+	$proj_id = $proj_data['proj_id'];
+	$proj_title = $proj_data['proj_title'];
+	$proj_cat = $proj_data['proj_cat'];
+	$proj_desc = $proj_data['proj_desc'];
+	$proj_date = isset($proj_data['proj_date'])? $proj_data['proj_date'] : null;
+	$proj_file = isset($proj_data['proj_file'])? $proj_data['proj_file'] : null;
+
+
+	//check if there is a new post_file (image) and execute this update statement if so 
+	if(!is_null($proj_file)){
+		
+		$statement = $db->prepare(" 
+			UPDATE projects
+			SET `proj_title` = :proj_title, 
+				`proj_cat` = :proj_cat,
+				`proj_desc` = :proj_desc, 
+				`proj_date` = CURRENT_TIMESTAMP, 
+				`proj_file` = :proj_file
+			WHERE `proj_id` = :proj_id;
+		");
+
+
+		try {
+			$statement->bindValue("proj_title", $proj_title, PDO::PARAM_STR);
+			$statement->bindValue("proj_cat", $proj_cat, PDO::PARAM_STR);
+			$statement->bindValue("proj_desc", $proj_desc, PDO::PARAM_STR);
+			$statement->bindValue("proj_file", $proj_file, PDO::PARAM_STR);
+			$statement->bindValue("proj_id", $proj_id, PDO::PARAM_STR);
+			if ($statement->execute()){		
+				header('Refresh:0 ; URL=project.php?id='.$proj_id.'');
+				}
+			}
+		catch(\PDOException $e){
+			echo '<div class="alert alert-error"><p><strong>Something is wrong!</strong><br />We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: <br />'.$e->getMessage().'</p></div>';
+		}
+
+	} else {
+
+		$statement = $db->prepare(" 
+				UPDATE projects
+				SET `proj_title` = :proj_title, 
+					`proj_cat` = :proj_cat,
+					`proj_desc` = :proj_desc, 
+					`proj_date` = CURRENT_TIMESTAMP
+				WHERE `proj_id` = :proj_id;
+			");
+
+
+		try {
+			$statement->bindValue("proj_title", $proj_title, PDO::PARAM_STR);
+			$statement->bindValue("proj_cat", $proj_cat, PDO::PARAM_STR);
+			$statement->bindValue("proj_desc", $proj_desc, PDO::PARAM_STR);
+			$statement->bindValue("proj_id", $proj_id, PDO::PARAM_STR);
+			if ($statement->execute()){		
+				header('Refresh:0 ; URL=project.php?id='.$proj_id.'');
+				
+				}
+			}
+
+		catch(\PDOException $e){
+			echo '<div class="alert alert-error"><p><strong>Something is wrong!</strong><br />We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: <br />'.$e->getMessage().'</p></div>';
+		}
+	}
+
+}// end update_project
+
+
 public static function new_post($post_data){
 	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
 	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);

@@ -7,7 +7,7 @@ class ProjectPostsModel {
 
 
 	public function show_project_posts(){
-		$proj_id = $_GET['id'];
+		$proj_id = isset($_GET['id'])? $_GET['id'] : null;
 		//$user_id = Database::user_id_query($_SESSION['username']);
 		$project = ProjectDatabaseHelper::show_project($proj_id);
 		return $project;
