@@ -1,3 +1,9 @@
+<?php 
+$query = $_SERVER['PHP_SELF'];
+$path = pathinfo( $query );
+$active = $path['basename'];
+$var = '';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,17 +39,37 @@
           <a class="brand" href="index.php">Medea Labs</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="home.php">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="contact.php">Contact</a></li>
+              <li <?php 
+                  if($active == 'home.php'){
+                    echo 'class="active"';
+                  }
+              ?>><a href="home.php">Home</a></li>
+              <li
+               <?php 
+                  if($active == 'about.php'){
+                    echo 'class="active"';
+                  }
+              ?>><a href="#about">About</a></li>
+              <li
+                 <?php 
+                  if($active == 'contact.php'){
+                    echo 'class="active"';
+                  }
+              ?>><a href="contact.php">Contact</a></li>
             </ul>
             <ul class="nav pull-right">
-              <?php if(!empty($_SESSION['username'])){
+              <?php 
+                if(!empty($_SESSION['username'])){
                   // if user is logged in show the logout button
-                  echo '<li><a href="logout.php">Log Out</a></li>';
+                  echo '<li ><a href="logout.php">Log Out</a></li>';
               } else {
                   // if a user is not logged in show the sign in button
-                 echo'<li><a href="auth.php">Sign In</a></li>';
+                  
+                  if($active == 'auth.php'){
+                    $var = 'active';  
+                  }
+                  ;
+                 echo '<li class="'.$var.'"><a href="auth.php">Sign In</a></li>';
               } ?>          
             </ul>
           </div><!--/.nav-collapse -->

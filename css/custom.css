@@ -137,7 +137,7 @@ hr {
 
 .file_upload {
   display: block;
-  max-width: 35%;
+  max-width: 30%;
   min-width: 300px;
   padding: 2%;
   color: #fff;
@@ -197,6 +197,14 @@ hr {
   padding-bottom: 10px;
   
   }
+
+.current_post_image{
+  display: block;
+  max-width: 300px;
+}
+.current_post_image img {
+  border: 2px solid #c1c1c1;
+}
 
 
 /* ====== Home Page Hero Box    ====== */
