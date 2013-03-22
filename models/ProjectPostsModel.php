@@ -146,7 +146,9 @@ class ProjectPostsModel {
 	} // end edit_post
 
 
-	public function delete_post(){
+	public function delete_post($post_id){
+
+		ProjectDatabaseHelper::delete_post($post_id);
 
 	} // end delete_post
 

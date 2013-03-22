@@ -243,9 +243,29 @@ public static function update_post($post_data){
 }// end update_post
 
 
-public static function delete_post($post_data){
+public static function delete_post($post_id){
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
-}
+
+	$statement = $db->prepare("
+			DELETE FROM posts
+			WHERE post_id = :post_id;
+		");
+
+	try {
+			$statement->bindValue("post_id", $post_id, PDO::PARAM_STR);
+			if ($statement->execute()){		
+				
+				header('Refresh:3 ; URL=home.php');
+				}
+			}
+
+		catch(\PDOException $e){
+			echo '<div class="alert alert-error"><p><strong>Something is wrong!</strong><br />We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: <br />'.$e->getMessage().'</p></div>';
+		}
+
+}// end delete_post	
 
 
 } //end Project_Database_Helper

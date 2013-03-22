@@ -74,7 +74,7 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 		}
 		//check if current user is post author, if true present edit | delete options
 		if(isset($_SESSION['username']) && $_SESSION['username'] == $post['user_name']){
-			echo '<p><a class="label label-info" href="post.php?edit='.$post_id.'"><i class="icon-edit icon-white"></i> Edit</a>     <a class="label label-important" href="#"><i class="icon-trash icon-white"></i> Delete</a></p>';
+			echo '<p><a class="label label-info" href="post.php?edit='.$post_id.'"><i class="icon-edit icon-white"></i> Edit</a>     <a class="label label-important" href="post.php?delete='.$post_id.'"><i class="icon-trash icon-white"></i> Delete</a></p>';
 		}
 
 		echo '<p class="post_text">'.$post_text.'</p>';

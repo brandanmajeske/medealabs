@@ -31,19 +31,16 @@ $rows = $data;
 </div>
 <div class="span10">
 <div class="well">
-<p class="muted">Note: Dynamically generated user content will display here</p>
 <?php 
 	
 	foreach($rows as $num => $row){
 		$proj_title = $row['proj_title'];
 		$proj_id = $row['proj_id'];
-		echo '<a href="project.php?id='.$proj_id.'">'.$proj_title. '</a><br />';
+		echo '<p><a class="btn btn-large btn-block btn-warning" href="project.php?id='.$proj_id.'">'.$proj_title. ' &raquo;</a></p>';
 	}	
 
 ?>
 
 </div>
-
-<p><a href="itemview.php?itemview=item">View Item Detail &raquo;</a><p>	</div>
 </div>
 </div>

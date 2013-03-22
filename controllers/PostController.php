@@ -9,7 +9,7 @@ $content_page = '';
 //assign to variable the proj id from the url
 $proj_id = isset($_GET['proj_id'])? $_GET['proj_id'] : null;
 $post_data = isset($post_data)? $post_data : null;
-
+$errors = null;
 // Check if adding a new post add to DB
 if(isset($_GET['proj_id'])){
 	$content_page = 'post';
@@ -29,6 +29,14 @@ if(isset($_GET['edit'])){
 	//print_r($post_data);
 
 	$errors = $model->edit_post('errors',$proj_id);
+}
+
+if(isset($_GET['delete'])){
+	$post_id = $_GET['delete'];
+	$content_page = 'delete_post';
+	$post_data = $model->get_single_post($post_id);
+	$proj_id = $post_data['proj_id'];
+	$model->delete_post($post_id);
 }
 
 
