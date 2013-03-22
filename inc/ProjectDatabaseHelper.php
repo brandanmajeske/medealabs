@@ -86,7 +86,7 @@ public static function new_post($post_data){
 	$post_text = $post_data['post_text'];
 	$user_id = $post_data['user_id'];
 	$proj_id = $post_data['proj_id'];
-	$post_date = $post_date['post_date'];
+	$post_date = $post_data['post_date'];
 	$post_file = $post_data['post_file'];
 	$fields = '`'. implode('`, `', array_keys($post_data)) . '`';
 
@@ -104,7 +104,8 @@ public static function new_post($post_data){
 		$statement->bindValue("post_file", $post_file, PDO::PARAM_STR);
 		if ($statement->execute()){		
 			//$_SESSION['username'] = $user_name;
-			header('Location: project.php?id='.$proj_id);
+			//header("Location: project.php?id='.$proj_id.'"); <-- something is wrong - Bug
+			header('Location: home.php');
 			}
 		}
 
@@ -240,6 +241,11 @@ public static function update_post($post_data){
 	}
 
 }// end update_post
+
+
+public static function delete_post($post_data){
+
+}
 
 
 } //end Project_Database_Helper
