@@ -147,6 +147,29 @@ public static function update_project($proj_data){
 
 }// end update_project
 
+public static function delete_project($proj_id){
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+	$statement = $db->prepare("
+			DELETE FROM projects
+			WHERE proj_id = :proj_id;
+		");
+
+	try {
+			$statement->bindValue("proj_id", $proj_id, PDO::PARAM_STR);
+			if ($statement->execute()){		
+				
+				header('Refresh:2 ; URL=home.php');
+				}
+			}
+
+		catch(\PDOException $e){
+			echo '<div class="alert alert-error"><p><strong>Something is wrong!</strong><br />We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: <br />'.$e->getMessage().'</p></div>';
+		}
+
+}// end delete_post	
+
 
 public static function new_post($post_data){
 	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);

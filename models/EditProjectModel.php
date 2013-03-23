@@ -73,8 +73,12 @@ class EditProjectModel {
 	}
 
 
+public function delete_project($proj_id){
+
+		ProjectDatabaseHelper::delete_project($proj_id);
+
+	} // end delete_project
 
 
 
-
-}// end CreateProjectModel
+}// end EditProjectModel

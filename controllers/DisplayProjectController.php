@@ -29,13 +29,15 @@ if(isset($_GET['edit'])){
 	$content_page = 'edit_project_form';
 	$editprojmod->get_single_project();
 	$project = $editprojmod->get_single_project('project_data');
-	
 	//echo '<pre>',print_r($project, true),'</pre>';
-
 	$editprojmod->edit_project();
-
 }
-
+//if delete, call function to delete the current project
+if(isset($_GET['delete'])){
+	$proj_id = $_GET['delete'];
+	$content_page = 'delete_project';
+	$editprojmod->delete_project($proj_id);
+}
 
 
 //call views and pass the project data to the project_posts view
