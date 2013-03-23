@@ -17,7 +17,7 @@ class UserProfileModel {
 				
 
 				if(empty($_POST) === false){
-					$required_fields = array('user_bio');
+					$required_fields = array('full_name','location', 'user_bio');
 
 
 					foreach($_POST as $key=>$value) {
@@ -30,21 +30,42 @@ class UserProfileModel {
 					}
 				}
 		// if no errors found add user_profile data to the database.
-				if(empty($errors) === true){
+				if(empty($_POST) === false && empty($errors) === true){
 
-					//get username for logged in user
+					$tmp_name = $_FILES['images']['tmp_name'];
+					$uploadfilename = $_FILES['images']["name"];
+					$saveddate=date("mdy-Hms");
+					$newfilename = "./uploads/user_image/".basename($saveddate."-".$uploadfilename);
+					$user_file = '';
+					
+					if($_FILES['images']['name']){
+					$user_file = basename($saveddate."-".$uploadfilename);
+					}
+					//move file to storage
+					move_uploaded_file($tmp_name, $newfilename);
+					
+					//get current user
 					$user_name = $_SESSION['username'];
 					// get user id for the logged in user
 					$user_id = Database::user_id_query($user_name);
+					$full_name = isset($_POST['full_name'])? $_POST['full_name'] : null;
+					$location = isset($_POST['location'])? $_POST['location'] : null;
 					$user_bio = isset($_POST['user_bio'])? $_POST['user_bio'] : null;
+					
 					// put profile data into array 
-					$user_profile_data = array(
+					$new_user_profile = array(
+						'full_name' => $full_name,
+						'location' => $location,
 						'user_bio' => $user_bio,
 						'user_id' => $user_id,
 						'join_date' => ''
 						);
+
+					if($_FILES['images']['name']){
+						$new_user_profile['user_file'] = $user_file;
+					}
 					//call static function to insert profile data array into the database
-					UserProfileHelper::new_profile($user_profile_data);
+					UserProfileHelper::new_profile($new_user_profile);
 				}
 	} // end new_profile
 
@@ -94,19 +115,40 @@ class UserProfileModel {
 					}
 				}
 		// if no errors found add user_profile data to the database.
-				if(empty($errors) === true){
+				if(empty($_POST) === false && empty($errors) === true){
+
+					$tmp_name = $_FILES['images']['tmp_name'];
+					$uploadfilename = $_FILES['images']["name"];
+					$saveddate=date("mdy-Hms");
+					$newfilename = "./uploads/user_image/".basename($saveddate."-".$uploadfilename);
+					$user_file = '';
+					
+					if($_FILES['images']['name']){
+					$user_file = basename($saveddate."-".$uploadfilename);
+					}
+					//move file to storage
+					move_uploaded_file($tmp_name, $newfilename);
 
 					//get username for logged in user
 					$user_name = $_SESSION['username'];
 					// get user id for the logged in user
 					$user_id = Database::user_id_query($user_name);
+					$full_name = isset($_POST['full_name'])? $_POST['full_name'] : null;
+					$location = isset($_POST['location'])? $_POST['location'] : null;
 					$user_bio = isset($_POST['user_bio'])? $_POST['user_bio'] : null;
 					// put profile data into array 
 					$user_profile_data = array(
+						'full_name' => $full_name,
+						'location' => $location,
 						'user_bio' => $user_bio,
 						'user_id' => $user_id,
 						);
+					//if profile image is being updated push the file into the array
+					if($_FILES['images']['name']){
+						$user_profile_data['user_file'] = $user_file;
+					}
 					//call static function to insert profile data array into the database
+					//echo '<pre>',print_r($user_profile_data, true),'</pre>';
 					UserProfileHelper::update_profile($user_profile_data);
 	}
 }// end update_profile

@@ -11,25 +11,30 @@ class UserProfileHelper {
 
 private $db;
 
-public static function new_profile($user_profile_data){
+public static function new_profile($new_user_profile){
 	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
 	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
-	$fields = '`'. implode('`, `', array_keys($user_profile_data)) . '`';
-	$user_bio = $user_profile_data['user_bio'];
-	$user_id = $user_profile_data['user_id'];
-	$join_date = $user_profile_data['join_date'];
-
+	$fields = '`'. implode('`, `', array_keys($new_user_profile)) . '`';
+	$full_name = $new_user_profile['full_name'];
+	$location = $new_user_profile['location'];
+	$user_bio = $new_user_profile['user_bio'];
+	$user_id = $new_user_profile['user_id'];
+	$join_date = $new_user_profile['join_date'];
+	$user_file = $new_user_profile['user_file'];
+	
 	$statement = $db->prepare("
 			INSERT INTO user_profiles ($fields) 
-			VALUES (:user_bio, :user_id, CURRENT_TIMESTAMP);
+			VALUES (:full_name, :location, :user_bio, :user_id, CURRENT_TIMESTAMP, :user_file);
 			");
 	try {
+		$statement->bindValue("full_name", $full_name, PDO::PARAM_STR);
+		$statement->bindValue("location", $location, PDO::PARAM_STR);
 		$statement->bindValue("user_bio", $user_bio, PDO::PARAM_STR);
 		$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
+		$statement->bindValue("user_file", $user_file, PDO::PARAM_STR);
 		if ($statement->execute()){		
-			//$_SESSION['username'] = $user_name;
-			header('Location: home.php?most_recent_activity');
+			header('Refresh:0 ; URL=home.php');
 			}
 		}
 	catch(\PDOException $e){
@@ -72,7 +77,7 @@ public static function get_user_profile($user_id){
 	$user_id = $user_id;
 
 	$statement = $db->prepare("
-		select user_bio
+		select *
 		from user_profiles
 		where `user_id` = :user_id;
 	");
@@ -94,26 +99,62 @@ public static function update_profile($user_profile_data){
 	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
 	$fields = '`'. implode('`, `', array_keys($user_profile_data)) . '`';
+	$full_name = $user_profile_data['full_name'];
+	$location = $user_profile_data['location'];
 	$user_bio = $user_profile_data['user_bio'];
 	$user_id = $user_profile_data['user_id'];
+	$user_file = $user_profile_data['user_file'];
+
+	if(!is_null($user_file)){
 
 	$statement = $db->prepare("
 			UPDATE user_profiles
-			SET user_bio = :user_bio
+			SET full_name = :full_name, 
+				location = :location,
+				user_bio = :user_bio,
+				user_file = :user_file
 			WHERE user_id = :user_id;
 			");
 	try {
+		$statement->bindValue("full_name", $full_name, PDO::PARAM_STR);
+		$statement->bindValue("location", $location, PDO::PARAM_STR);
+		$statement->bindValue("user_bio", $user_bio, PDO::PARAM_STR);
+		$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
+		$statement->bindValue("user_file", $user_file, PDO::PARAM_STR);
+		if ($statement->execute()){		
+			header('Refresh:0 ; URL=home.php');
+			}
+		}
+
+	catch(\PDOException $e){
+			echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+		}
+	} else {
+
+		$statement = $db->prepare("
+			UPDATE user_profiles
+			SET full_name = :full_name, 
+				location = :location,
+				user_bio = :user_bio
+			WHERE user_id = :user_id;
+			");
+	try {
+		$statement->bindValue("full_name", $full_name, PDO::PARAM_STR);
+		$statement->bindValue("location", $location, PDO::PARAM_STR);
 		$statement->bindValue("user_bio", $user_bio, PDO::PARAM_STR);
 		$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
 		if ($statement->execute()){		
-			header('Location: home.php?most_recent_activity');
+			header('Refresh:0 ; URL=home.php');
 			}
 		}
+
 	catch(\PDOException $e){
 			echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
 		}
 
-	}// end new_profile
+	}
+
+	}// end update_profile
 
 
 

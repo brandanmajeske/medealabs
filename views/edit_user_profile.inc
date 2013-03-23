@@ -16,13 +16,20 @@ if(empty($errors) === false){
 
 <h2>Edit Your Profile</h2>
 	<p>
-		
+		<div>
+		<label>Full Name:</label>
+		<input class="span4" type="text"  name="full_name" <?php echo 'value="'.$user_profile_data['full_name'].'"';?>/>
+		<label>Location:</label>
+		<input class="span4"type="text" name="location"  <?php echo 'value="'.$user_profile_data['location'].'"';?>/>
 		<div class="file_upload">
-		<label for "images"><i class="icon-upload icon-white"></i> Upload Your Profile Image: </label>
+		<label for "images"><i class="icon-upload icon-white"></i> Choose a file to upload: </label>
 		<input type="file" name="images" id="images" />
-		<p class="muted">No larger than 100kb please!<p>
-		</div>
-
+	 <div class="current_user_image">
+			<label for "current_user_image">Current Image</label>
+			<img class="img-polaroid" src="uploads/user_image/<?php echo $user_profile_data['user_file']; ?>" />
+		</div>	
+	</div>
+		<br />
 		<label for="user_bio">Enter Your Bio:</label>
 		<textarea name="user_bio" id="user_bio"><?php echo strip_tags($user_profile_data['user_bio']); ?></textarea>
 		<br />
