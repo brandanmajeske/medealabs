@@ -11,7 +11,7 @@
       <div class="row">
         <div class="span8">
           <h2>Recent Activity</h2>
-          <p>This section will contain recent activity posts. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p>This section will contain dynamically generated content from recent projects and posts by members. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
           <p class="visible-desktop"><a href="itemview.php?itemview=item">View Details &raquo;</a></p>
           <p class="hidden-desktop"><a class="btn btn-small btn-info" href="itemview.php?itemview=item">View Details &raquo;</a></p>
         </div>
@@ -19,7 +19,8 @@
         <aside>
         <div class="span4">
           <h2>Categories</h2>
-          <p>A sub-menu of categories. Content to be determined by users. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper.</p>
+          <p>A sub-menu of categories. A list of recent posts, which are comments on public projects will show here.</p>
+          <p>A category 'tag' cloud goes here.</p>
         </div>
       </div>
       </aside>

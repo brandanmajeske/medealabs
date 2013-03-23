@@ -18,7 +18,8 @@ $rows = $data;
     <ul class="nav">
     <li><a href="create_project.php">Create A Project</a></li>
 	<li><a href="#">Search Projects</a></li>
-	<li><a href="#">Something Else</a></li>
+	<li><a href="#">Your Projects</a></li>
+	<li><a href="#">Your Posts</a></li>
 	<li><a href="profile.php">Edit Your Profile</a></li>
     </ul>
   </div>

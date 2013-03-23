@@ -49,7 +49,7 @@ $var = '';
                   if($active == 'about.php'){
                     echo 'class="active"';
                   }
-              ?>><a href="#about">About</a></li>
+              ?>><a href="about.php">About</a></li>
               <li
                  <?php 
                   if($active == 'contact.php'){
