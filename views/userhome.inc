@@ -13,34 +13,47 @@ $rows = $data;
 </div>
 
 <!-- body / menu -->
-
-<div class="container-fluid">
-<div class="row-fluid">
-<div class="span2">
-<!--Sidebar content-->
-<div> <!-- user menu -->
-<h4 class="muted">User Menu</h4>
-<ul class="muted">
-	<li><a href="create_project.php">Create Project</a></li>
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
+    <li><a href="create_project.php">Create A Project</a></li>
 	<li><a href="#">Search Projects</a></li>
 	<li><a href="#">Something Else</a></li>
 	<li><a href="profile.php">Edit Your Profile</a></li>
-</ul>
-</div> <!-- end user menu -->
-
+    </ul>
+  </div>
 </div>
-<div class="span10">
-<div class="well">
+
+<div class="container-fluid">
+
 <?php 
 	
 	foreach($rows as $num => $row){
 		$proj_title = $row['proj_title'];
+		$proj_desc = $row['proj_desc'];
 		$proj_id = $row['proj_id'];
-		echo '<p><a class="btn btn-large btn-block btn-warning" href="project.php?id='.$proj_id.'">'.$proj_title. ' &raquo;</a></p>';
-	}	
+		$proj_file = isset($row['proj_file'])? $row['proj_file'] : null;
+
+		if(!empty($proj_file)){
+
+		echo '<div class="row-fluid span12 user-proj-list">
+				<div class="span12">
+				<a class="" href="project.php?id='.$proj_id.'"><img class="img-polaroid" src="uploads/'.$proj_file.'"></a>
+  				<a href="project.php?id='.$proj_id.'"><h4>'.$proj_title.'</h4></a>
+  				<p>'.$proj_desc.'</p>
+				</div>	
+			</div>';
+
+		} else {
+
+			echo '<div class="row-fluid span12 user-proj-list">
+				<div class="span12 pull-left">
+  				<a href="project.php?id='.$proj_id.'"><h4>'.$proj_title.'</h4></a>
+  				<p>'.$proj_desc.'</p>
+				</div>	
+			</div>';
+		}		
+	}
 
 ?>
-
-</div>
-</div>
 </div>

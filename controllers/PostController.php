@@ -30,7 +30,7 @@ if(isset($_GET['edit'])){
 
 	$errors = $model->edit_post('errors',$proj_id);
 }
-
+// Delete post 
 if(isset($_GET['delete'])){
 	$post_id = $_GET['delete'];
 	$content_page = 'delete_post';

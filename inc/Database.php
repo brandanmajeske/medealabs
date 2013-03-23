@@ -160,7 +160,7 @@ public static function get_projects($user_id){
 	$user_id = $user_id;
 
 	$statement = $db->prepare("
-			SELECT `proj_id`, `proj_title`, `proj_cat`, `proj_desc`, `user_name`
+			SELECT `proj_id`, `proj_title`, `proj_cat`, `proj_desc`, `proj_date`, `proj_file`, `user_name`
 			FROM projects RIGHT OUTER JOIN users
 			on users.user_id = projects.user_id
 			WHERE projects.user_id = :user_id;

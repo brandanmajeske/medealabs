@@ -153,6 +153,22 @@ hr {
   overflow: hidden;
 }
 
+/* ========= User Page =========*/
+
+.user-proj-list{
+  padding: 1em;
+  max-width: 100%;
+}
+
+
+
+.user-proj-list img {
+  max-width: 50%;
+  float: left;
+  margin-right: 1em;
+}
+
+
 
 /* ========= Post  ========*/
   
