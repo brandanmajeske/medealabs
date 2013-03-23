@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.15)
 # Database: mldb
-# Generation Time: 2013-03-21 03:54:54 +0000
+# Generation Time: 2013-03-23 02:25:17 +0000
 # ************************************************************
 
 
@@ -44,11 +44,16 @@ LOCK TABLES `posts` WRITE;
 
 INSERT INTO `posts` (`post_id`, `post_title`, `post_text`, `proj_id`, `user_id`, `post_date`, `post_file`)
 VALUES
-	(2,'The Overlane Route','Taken at the Historical Boise Train Station',1,1,'2013-03-20 13:58:39','032013-130339-seal.jpg'),
+	(2,'The Overlane Route','Taken at the Historical Boise Train Station.',1,1,'2013-03-21 20:16:10','032013-130339-seal.jpg'),
 	(3,'Train Tracks','B&W Train Tracks\r\nTaken: July 2, 2012',1,20,'2013-03-20 14:05:19','032013-140319-whereDoTheseGo.jpg'),
-	(4,'No Trespass','Ignore this sign!',2,1,'2013-03-20 14:14:46','032013-140346-noTrespassing.jpg'),
-	(5,'Cloudy Day','Here comes the sun after a rainy day.',3,1,'2013-03-20 15:36:55','032013-150355-RollingClouds.jpg'),
-	(6,'Johnny\'s Test Post!','This is a cool Yellow Tree!',4,29,'2013-03-20 20:54:16','032013-200316-yellowTree.jpg');
+	(4,'No Trespassing','Do NOT ignore this sign! OK Go Ahead.',2,1,'2013-03-21 21:10:55','032113-210355-noTrespassing.jpg'),
+	(6,'Johnny\'s Test Post!','This is a cool Yellow Tree!',4,29,'2013-03-20 20:54:16','032013-200316-yellowTree.jpg'),
+	(34,'Cloudy Day','Some puffy clouds.',0,1,'2013-03-21 21:48:56','032113-210356-RollingClouds.jpg'),
+	(35,'Taken with my favorite lens','This is my daughter Jordan... We call her Jordie.',4,29,'2013-03-22 17:31:19','032213-170319-IMG_6602.jpg'),
+	(36,'Taken with my favorite lens','This is my daughter Jordan... We call her Jordie.',0,29,'2013-03-22 17:31:19','032213-170319-IMG_6602.jpg'),
+	(38,'A Test Post','To Be Deleted.',0,2,'2013-03-22 18:06:55','032213-180355-JJ6.jpg'),
+	(39,'brandan','Image Title: City of Trees\r\nTaken: Summer 2012\r\nLocation: Boise Idaho',7,1,'2013-03-22 20:23:04','032213-200304-cityView.jpg'),
+	(40,'brandan','Image Title: City of Trees\r\nTaken: Summer 2012\r\nLocation: Boise Idaho',0,1,'2013-03-22 20:23:04','032213-200304-cityView.jpg');
 
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -77,10 +82,12 @@ LOCK TABLES `projects` WRITE;
 
 INSERT INTO `projects` (`proj_id`, `proj_title`, `proj_cat`, `proj_desc`, `user_id`, `proj_date`, `proj_file`)
 VALUES
-	(1,'Idaho Photography Project','Photography','Photography projects in Idaho.',1,'2013-03-20 13:51:43','032013-130343-boise_light_leak.jpg'),
-	(2,'Digital Art','Digital Art','Fire in the Sky',1,'2013-03-20 14:11:31','032013-140331-fireSky.jpg'),
-	(3,'Rainy Day Blues','Photography','Images from a rainy day.',1,'2013-03-20 15:35:43',''),
-	(4,'A New Project','Photography','Wet grass.',29,'2013-03-20 20:51:37','032013-200337-wet_grass.jpg');
+	(1,'Idaho Photography Project','Photography','Photography projects in Idaho. Curabitur blandit tempus porttitor. Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla.\r\n\r\nNulla vitae elit libero, a pharetra augue. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. ',1,'2013-03-22 20:11:37','032013-130343-boise_light_leak.jpg'),
+	(2,'Digital Art','Digital Art','Fire in the Sky.\r\nDonec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Nullam quis risus eget urna mollis ornare vel eu leo.',1,'2013-03-22 20:11:19','032013-140331-fireSky.jpg'),
+	(3,'Rainy Day Blues','Photography','Images from a rainy day. \r\nNullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui.\r\n\r\nDonec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.',1,'2013-03-22 20:17:01','032213-200342-RollingClouds.jpg'),
+	(4,'A Photo Project','Photography','Take a pic of your favorite lens.',29,'2013-03-22 17:28:02','032213-170342-lens.jpg'),
+	(6,'Cute Kid Toys','Photography','Playing with Jordie and her dolls.',29,'2013-03-22 17:35:40','032213-170352-orangie.jpg'),
+	(7,'Image Contest','Photography','Photography contest details:\r\n\r\nVestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor.',2,'2013-03-22 20:21:41','032213-200341-boise_light_leak.jpg');
 
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -125,7 +132,8 @@ INSERT INTO `user_profiles` (`id`, `user_bio`, `user_id`, `join_date`, `user_ima
 VALUES
 	(1,'I like long walks on the beach. Large bottles of wine and lots of cheese. And cows.',1,'2013-03-20 15:33:24',NULL),
 	(2,'Jill\'s wicked cool bio. From Massachusetts - says \"Pawk tha caw in yaw muthas yawd!\"',28,'2013-03-20 20:43:20',NULL),
-	(4,'This profile has been edited by the user.',29,'2013-03-20 20:51:49',NULL);
+	(4,'This profile has been edited by the user.',29,'2013-03-20 20:51:49',NULL),
+	(5,NULL,2,'2013-03-22 20:23:58',NULL);
 
 /*!40000 ALTER TABLE `user_profiles` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -159,7 +167,8 @@ VALUES
 	(26,'ben','393c0e8ade3401cc4bedb8a1376a97d8','ben jie','1363832318','ben@g.com'),
 	(27,'jet','d13d6b1bb993390ba6e4693e2d2e3d8b','jet black','1363833388','jb@jet.com'),
 	(28,'jill','f65769d1763942a29ea7808c35e2f273','jill bean','1363833771','jb@jb.com'),
-	(29,'johnny','aa3d256d35f3a28276e8fed75c6f0ad6','johnny test','1363834239','test@jon.com');
+	(29,'johnny','aa3d256d35f3a28276e8fed75c6f0ad6','johnny test','1363834239','test@jon.com'),
+	(30,'ricoh','ff9d5b204cf549a71c60d8088ab0de72','ricoh sullivan','1363995427','someguy@cheetah.com');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
