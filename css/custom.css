@@ -153,19 +153,47 @@ hr {
   overflow: hidden;
 }
 
+
+
 /* ========= User Page =========*/
 
+/* user_menu */
+
+.user_menu{
+  background-color: rgba(70,186,39, .05);  
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.nav > li > a {
+ color: rgba(70,186,39, .75);
+}
+.user_menu a:hover {
+  display:block;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  background-color: green;
+}
+
+.nav > li > a:hover {
+text-decoration: none;
+background-color: rgba(70,186,39, .75);
+}
+
 .user-proj-list{
-  padding: 1em;
+  display: block;
+  padding: 10px 0;
   max-width: 100%;
+  border-bottom: 1px dotted rgba(0,0,0,.2);
+  min-height: 230px;
 }
 
 
 
 .user-proj-list img {
-  max-width: 50%;
-  float: left;
+  max-width: 35%;
   margin-right: 1em;
+  float:left;
 }
 
 
@@ -192,7 +220,7 @@ hr {
   color: #f5f5f5;
   font-family: "Prosto One", sans-serif;
   font-size: 1em;
-  background: url('../img/blue_texture');
+  background: url('../img/blue_texture.png');
   border: 1px solid #0F6191;
   box-shadow: 0px -1px 4px rgba(15,97,145,.5);
 }
@@ -403,7 +431,12 @@ hr {
   .hero-unit p {
       font-size: .9em;
   }
-}
+
+  .user-proj-list{
+  min-height: 200px;
+} 
+
+} 
 
 @media only screen and (min-width: 481px) and (max-width: 767px) {
 
@@ -428,6 +461,10 @@ hr {
   .hero-unit p {
       font-size: .9em;
   }
+
+  .user-proj-list{
+  min-height: 170px;
+}
 
 }
 
@@ -459,6 +496,9 @@ hr {
   .hero-unit p {
       font-size: .75em;
   }
+   .user-proj-list{
+  min-height: 120px;
+}
 
 }
 
