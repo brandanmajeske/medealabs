@@ -11,3 +11,6 @@ Password: password
 
 
 Or you can register and login with your own user name and password.
+
+
+There is a working version of this hosted at http://brandanmajeske.info/fso/medealabs
