@@ -16,6 +16,7 @@ $proj_date = date('M dS Y - h:i A', $timestamp);
 
 <div class="page-header project-header">
 <h1><?php echo ucwords($proj_title); ?></h1>
+
 </div>
 <div>
 <?php 
@@ -23,13 +24,14 @@ $proj_date = date('M dS Y - h:i A', $timestamp);
 			echo '<p><img class="post_image" src="uploads/'.$proj_file.'" alt="'.$proj_title.' image" /></p>';
 	}
 ?>
-
+<p><a class="btn btn-warning" href="post.php?proj_id=<?php echo $proj_id; ?>">Contribute to Project</a><p>
 <p>
 Project ID: <?php echo $proj_id; ?><br />
 Project Author: <?php echo ucwords($user_name); ?><br />
 Category: <?php echo ucfirst($proj_cat); ?><br />
 Date Created: <?php echo $proj_date; ?><br />
 Description: <?php echo ucfirst($proj_desc); ?></p>
+<p><a href="contact.php?report_proj=<?php echo($proj_id);?>">Report Abuse</a></p>
 <div class="clearfix">
 	<?php 
 	//check if current user is post author, if true present edit | delete options
@@ -38,7 +40,7 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 		}
 	?>
 </div>
-<p><a class="btn btn-warning" href="post.php?proj_id=<?php echo $proj_id; ?>">Contribute to Project</a><p>
+
 </div>
 
 <!-- Posts involving this project go here. -->
@@ -57,7 +59,6 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 
 		echo '<div class="posts">';
 
-		//$i = 0; <- for uses with accordions
 
 		//foreach post get the variables and display the files
 		foreach($posts as $post){
@@ -69,7 +70,7 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 		$post_date = date('M dS Y - h:i A', $timestamp);
 		$post_file = $post['post_file'];
 		isset($_SESSION['username'])? $_SESSION['username'] : null;
-		//$i++;
+		
 		
 		echo '<div class="single_post">
 				<div class="post_header">
@@ -84,7 +85,9 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 		}
 
 		echo '<p class="post_text">'.$post_text.'</p>';
-		echo '<p class="muted post_text">Author: '.$post_author.'<br/>Posted on: '.$post_date.'</p></div>';
+		echo '<p class="muted post_text">Author: '.$post_author.'<br/>Posted on: '.$post_date.'</p>';
+		echo '<p><a href="contact.php?report_post='.$post_id.' by '.$post_author.'">Report Abuse</a></p>';
+		echo '</div>';
 		
 		
 
@@ -92,9 +95,18 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 	echo '</div><!-- end post_container -->';
 	echo '</div><!-- end posts -->';
 	} // end if
-
-	
 		
 ?>
+
+</div>
+<div class="clearfix"></div>
+<div>
+	<?php 
+		//if there are no posts don't show the bottom 'contribute' button
+		if(!empty($posts)){
+			echo'<a class="btn btn-warning" 
+			href="post.php?proj_id='.$proj_id.'">Contribute to Project</a>';
+		}
+	?>
 
 </div>

@@ -7,17 +7,11 @@ $rows = $data;
 
 <!-- header -->
 <div class="page-header">
-<h1><?php echo ucfirst($username);?>'s Home Page
-</h1>
-<h2><small><?php echo $welcomemsg; ?></small></h2>
-</div>
-
-<div>
 	<!-- tablet/phone menu -->
 
 <div class="btn-group btn-large hidden-desktop pull-right">
-  <button class="btn btn-warning disabled">Actions</button>
-  <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+  <button class="btn btn-warning btn-large disabled">Actions</button>
+  <button class="btn btn-warning btn-large dropdown-toggle" data-toggle="dropdown">
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
@@ -28,6 +22,13 @@ $rows = $data;
 	<li><a href="profile.php">Edit Your Profile</a></li>
   </ul>
   </div>
+<h1><?php echo ucfirst($username);?>'s Home Page
+</h1>
+<h2><small><?php echo $welcomemsg; ?></small></h2>
+</div>
+
+<div>
+
 
 <!-- body / desktop menu -->
 
@@ -58,7 +59,7 @@ $rows = $data;
   				<a href="project.php?id='.$proj_id.'"><h4>'.$proj_title.'</h4></a>
   				<p>'.$proj_desc.'</p>
   				<p class="visible-desktop"><a href="project.php?id='.$proj_id.'">View Details &raquo;</a></p>
-          		<p class="hidden-desktop"><a class="btn btn-small btn-info" href="project.php?id='.$proj_id.'">View Details &raquo;</a></p>
+          		
 
 			</div>
 			<div class="clearfix"></div>	

@@ -155,7 +155,7 @@ hr {
   margin-left: 20px;
 }
 
-.categories {
+.sidebar_ul {
   color: white;
   list-style-type: none;
   margin: none;
@@ -168,14 +168,19 @@ hr {
   margin-bottom: 5px
 }
 
-.categories li {
+.sidebar_ul li {
   text-decoration: none;
 }
 
-.categories a {
+.sidebar_ul a {
   color: #fff;
 }
 
+.sidebar_link_separator{
+  border-bottom: 1px solid rgba(255,255,255, .5);
+  padding: 5px 0;
+  margin: 5px 0;
+}
 
 /* ========= File Inputs ========= */
 
@@ -230,7 +235,7 @@ hr {
 
 .user-proj-list{
   display: block;
-  padding: 10px 0;
+  padding: 0;
   max-width: 100%;
  
 }
@@ -473,6 +478,7 @@ hr {
     p {
       font-size: .9em;
   }
+
    .hero-unit img {
     max-width: 85%;
   }
@@ -504,6 +510,10 @@ hr {
       font-size: .9em;
   }
 
+  .hero-unit {
+    padding: 0 5%;
+  }
+
   .hero-unit img {
     max-width: 75%;
   }
@@ -513,6 +523,11 @@ hr {
 
   .hero-unit p {
       font-size: .9em;
+  }
+
+  .sidebar{
+    padding: 1%;
+    font-size: 1em;
   }
 
   .user-proj-list{
@@ -534,6 +549,10 @@ hr {
       font-size: .85em;
   }
 
+  .hero-unit {
+    padding: 0 5%;
+  }
+
   .hero-unit{
     min-width: 280px
   }
@@ -549,7 +568,15 @@ hr {
   .hero-unit p {
       font-size: .75em;
   }
-   .user-proj-list{
+  
+  .sidebar{
+    padding: 1%;
+    font-size: .95em;
+  }
+
+
+
+  .user-proj-list{
   min-height: 120px;
 }
 

@@ -32,6 +32,10 @@ if(isset($_GET['update'])){
 	$model->update_profile();
 }
 
+if(isset($_GET['delete'])){
+	$model->delete_user_profile();
+}
+
 $view->show('header');
 $view->show($content_page, $errors, $user_profile_data);
 $view->show('footer');

@@ -34,16 +34,19 @@
 <div class="container-fluid">
 <div class="row-fluid">
   <div class="sidebar span12 hidden-desktop">
+       <?php if(isset($_SESSION['username'])){
+            echo ' <h2>User Links</h2>
+             <ul class="sidebar_ul"><li class="sidebar_link_separator"><a href="home.php">User Home</a></li></ul>';
+           }?>
        <h2>Categories</h2>
-          <ul class="categories">
+          <ul class="sidebar_ul">
           <li class="all_cats"><a href="index.php">All Categories (Most Recent)</li>
 
           <?php 
           //loop through each category and display the results
           foreach($categories as $cat){
               echo '<li>'.'<a href="index.php?category='.strtolower($cat['proj_cat']).'">'.htmlentities($cat['proj_cat']).' : ('.$cat['count'].')</a></li>';   
-            }
-
+            } 
           ?>
         </ul>
     </div>
@@ -90,18 +93,24 @@
     </div>
 
     <div class="sidebar span4 visible-desktop">
+       <?php if(isset($_SESSION['username'])){
+            echo ' <h2>User Links</h2>
+             <ul class="sidebar_ul"><li class="sidebar_link_separator"><a href="home.php">User Home</a></li></ul>';
+           }?>
        <h2>Categories</h2>
-          <ul class="categories">
+          <ul class="sidebar_ul">
           <li class="all_cats"><a href="index.php">All Categories (Most Recent)</li>
 
           <?php 
           //loop through each category and display the results
           foreach($categories as $cat){
               echo '<li>'.'<a href="index.php?category='.strtolower($cat['proj_cat']).'">'.htmlentities($cat['proj_cat']).' : ('.$cat['count'].')</a></li>';   
-            }
-
+            } 
           ?>
         </ul>
+       
+           
+        
     </div>
   </div>
 </div>       

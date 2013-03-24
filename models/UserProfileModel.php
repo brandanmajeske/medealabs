@@ -151,6 +151,17 @@ class UserProfileModel {
 					//echo '<pre>',print_r($user_profile_data, true),'</pre>';
 					UserProfileHelper::update_profile($user_profile_data);
 	}
-}// end update_profile
+	}// end update_profile
 
-}
+
+	public function delete_user_profile(){
+		//get username for logged in user
+		$user_name = $_SESSION['username'];
+		// get user id for the logged in user
+		$user_id = Database::user_id_query($user_name);
+		//call static fucntion to check if user profile already exists
+		UserProfileHelper::delete_profile($user_id);
+	}
+
+
+} // end UserProfileModel

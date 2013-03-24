@@ -31,16 +31,19 @@
 <div class="container-fluid">
 <div class="row-fluid">
   <div class="sidebar span12 hidden-desktop">
+       <?php if(isset($_SESSION['username'])){
+            echo ' <h2>User Links</h2>
+             <ul class="sidebar_ul"><li class="sidebar_link_separator"><a href="home.php">User Home</a></li></ul>';
+           }?>
        <h2>Categories</h2>
-          <ul class="categories">
+          <ul class="sidebar_ul">
           <li class="all_cats"><a href="index.php">All Categories (Most Recent)</li>
 
           <?php 
           //loop through each category and display the results
           foreach($categories as $cat){
               echo '<li>'.'<a href="index.php?category='.strtolower($cat['proj_cat']).'">'.htmlentities($cat['proj_cat']).' : ('.$cat['count'].')</a></li>';   
-            }
-
+            } 
           ?>
         </ul>
     </div>
@@ -68,7 +71,6 @@
           <a href="project.php?id='.$proj_id.'"><h4>'.$proj_title.'</h4></a>
           <p>'.$proj_desc.'</p>
           <p class="visible-desktop"><a href="project.php?id='.$proj_id.'">View Details &raquo;</a></p>
-              <p class="hidden-desktop"><a class="btn btn-small btn-info" href="project.php?id='.$proj_id.'">View Details &raquo;</a></p>
 
       </div>
       <div class="clearfix"></div>  
@@ -86,18 +88,25 @@
   }
 ?>
     </div>
-    <div class="sidebar span4 visible-desktop">
+     <div class="sidebar span4 visible-desktop">
+       <?php if(isset($_SESSION['username'])){
+            echo ' <h2>User Links</h2>
+             <ul class="sidebar_ul"><li class="sidebar_link_separator"><a href="home.php">User Home</a></li></ul>';
+           }?>
        <h2>Categories</h2>
-          <ul class="categories">
-            <li class="all_cats"><a href="index.php">All Categories (Most Recent)</li>
+          <ul class="sidebar_ul">
+          <li class="all_cats"><a href="index.php">All Categories (Most Recent)</li>
+
           <?php 
-          
+          //loop through each category and display the results
           foreach($categories as $cat){
               echo '<li>'.'<a href="index.php?category='.strtolower($cat['proj_cat']).'">'.htmlentities($cat['proj_cat']).' : ('.$cat['count'].')</a></li>';   
-            }
-
+            } 
           ?>
         </ul>
+       
+           
+        
     </div>
   </div>
 </div>       

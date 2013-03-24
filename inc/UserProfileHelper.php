@@ -21,9 +21,10 @@ public static function new_profile($new_user_profile){
 	$user_bio = $new_user_profile['user_bio'];
 	$user_id = $new_user_profile['user_id'];
 	$join_date = $new_user_profile['join_date'];
-	$user_file = $new_user_profile['user_file'];
+	$user_file = isset($new_user_profile['user_file'])? $new_user_profile['user_file']: null;
 	
-	$statement = $db->prepare("
+	if(!empty($user_file)){
+		$statement = $db->prepare("
 			INSERT INTO user_profiles ($fields) 
 			VALUES (:full_name, :location, :user_bio, :user_id, CURRENT_TIMESTAMP, :user_file);
 			");
@@ -40,6 +41,27 @@ public static function new_profile($new_user_profile){
 	catch(\PDOException $e){
 			echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
 		}
+	} else {
+
+		$statement = $db->prepare("
+			INSERT INTO user_profiles ($fields) 
+			VALUES (:full_name, :location, :user_bio, :user_id, CURRENT_TIMESTAMP);
+			");
+	try {
+		$statement->bindValue("full_name", $full_name, PDO::PARAM_STR);
+		$statement->bindValue("location", $location, PDO::PARAM_STR);
+		$statement->bindValue("user_bio", $user_bio, PDO::PARAM_STR);
+		$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
+		if ($statement->execute()){		
+			header('Refresh:0 ; URL=home.php');
+			}
+		}
+	catch(\PDOException $e){
+			echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+		}
+
+	}// end else
+	
 
 	}// end new_profile
 
@@ -103,7 +125,7 @@ public static function update_profile($user_profile_data){
 	$location = $user_profile_data['location'];
 	$user_bio = $user_profile_data['user_bio'];
 	$user_id = $user_profile_data['user_id'];
-	$user_file = $user_profile_data['user_file'];
+	$user_file = isset($user_profile_data['user_file'])? $user_profile_data['user_file'] : null;
 
 	if(!is_null($user_file)){
 
@@ -156,6 +178,34 @@ public static function update_profile($user_profile_data){
 
 	}// end update_profile
 
+public static function delete_profile($user_id){
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+	$user_id = $user_id;
+	//echo $user_id;
+	$statement = $db->prepare("
+		DELETE users.*, user_profiles.*, projects.*, posts.*
+		from users 
+		right outer join user_profiles
+			on users.user_id = user_profiles.user_id
+		right outer join projects
+			on projects.user_id = users.user_id
+		right outer join posts
+			on posts.user_id = users.user_id
+		where user_profiles.user_id = :user_id;
+	");
+	try{
+		$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
+		if($statement->execute()){
+			header('Refresh:0 ; URL=logout.php');
+		}
+		return false;
+	}
+	catch(\PDOException $e){
+			echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+	}
+
+}
 
 
 }// End UserProfileHelper
