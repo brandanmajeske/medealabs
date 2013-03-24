@@ -3,11 +3,8 @@
   $rows = $data;
   $data_array = $data2;  
   $categories = ($data_array['categories']);
-
   //echo '<pre>',print_r($data_array, true),'</pre>';
   //var_dump($data_array);
-  
-
 ?>
 
 <!-- Main hero unit for a primary marketing message or call to action -->
@@ -26,7 +23,7 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span8">
-      <h2>Latest Projects</h2>
+      <h2><?php echo $rows[0]['proj_cat']?> Projects</h2>
       <?php 
   
   foreach($rows as $num => $row){

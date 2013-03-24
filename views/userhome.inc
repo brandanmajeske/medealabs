@@ -82,16 +82,6 @@ $rows = $data;
 <!-- visible on desktop -->
 <div class="container-fluid visible-desktop">
 <div class="row-fluid">
-	<div class="span3 pull-left visible-desktop user_menu">
-		<ul class="nav nav-list">
-	  	<li class="nav-header">User Menu</li>
-	 	<li /><a href="create_project.php">Create A Project</a>
-		<li /><a href="#">Search Projects</a>
-		<li /><a href="#">Your Projects</a>
-		<li /><a href="#">Your Posts</a>
-		<li /><a href="profile.php">Edit Your Profile</a>
-	</ul>
-	</div>
 <div class="span9">
 <?php 
 	
@@ -131,5 +121,15 @@ $rows = $data;
 
 ?>
 </div>
+<div class="span3 visible-desktop user_menu">
+		<ul class="nav nav-list">
+	  	<li class="nav-header">User Menu</li>
+	 	<li /><a href="create_project.php">Create A Project</a>
+		<li /><a href="#">Search Projects</a>
+		<li /><a href="#">Your Projects</a>
+		<li /><a href="#">Your Posts</a>
+		<li /><a href="profile.php">Edit Your Profile</a>
+	</ul>
+	</div>
 </div>
 </div>

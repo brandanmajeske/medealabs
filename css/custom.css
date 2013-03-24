@@ -180,8 +180,8 @@ hr {
 }
 
 .nav > li > a:hover {
-text-decoration: none;
-background-color: rgba(70,186,39, .75);
+  text-decoration: none;
+  background-color: rgba(70,186,39, .75);
 }
 
 .user-proj-list{
@@ -191,12 +191,11 @@ background-color: rgba(70,186,39, .75);
  
 }
 
-
-
 .user-proj-list img {
   max-width: 35%;
   margin-right: 1em;
   float:left;
+  overflow: hidden;
 }
 
 
