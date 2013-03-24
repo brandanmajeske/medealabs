@@ -11,8 +11,16 @@
 ?>
 
 <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
+      <div class="hero-unit visible-desktop">
         <div class="hidden-phone"><img class="pull-left" src="img/logo.png" alt="Media Labs Logo" /></div>
+        <h1>Media + Ideas</h1>
+        <p>A virtual community of creative people sharing their portfolios and ideas for projects ranging from photography or digital art to programming. Join today and grow your ideas!</p>
+        <p class="visible-phone"><a href="register.php" class="btn btn-warning">Sign Up &raquo;</a></p>
+        <p class="hidden-phone"><a href="register.php" class="btn btn-warning btn-large">Sign Up &raquo;</a></p>
+      </div>
+
+      <div class="hero-unit hidden-desktop">
+        <div class="hidden-phone span8 offset2"><img class="offset2" src="img/logo.png" alt="Media Labs Logo" /></div>
         <h1>Media + Ideas</h1>
         <p>A virtual community of creative people sharing their portfolios and ideas for projects ranging from photography or digital art to programming. Join today and grow your ideas!</p>
         <p class="visible-phone"><a href="register.php" class="btn btn-warning">Sign Up &raquo;</a></p>
@@ -24,7 +32,24 @@
   <!-- dynamically generated content -->
 
 <div class="container-fluid">
-  <div class="row-fluid">
+<div class="row-fluid">
+  <div class="sidebar span12 hidden-desktop">
+       <h2>Categories</h2>
+          <ul class="categories">
+          <li class="all_cats"><a href="index.php">All Categories (Most Recent)</li>
+
+          <?php 
+          //loop through each category and display the results
+          foreach($categories as $cat){
+              echo '<li>'.'<a href="index.php?category='.strtolower($cat['proj_cat']).'">'.htmlentities($cat['proj_cat']).' : ('.$cat['count'].')</a></li>';   
+            }
+
+          ?>
+        </ul>
+    </div>
+</div>
+
+  <div class="row-fluid">   
     <div class="span8">
       <h2>Latest Projects</h2>
       <?php 
@@ -36,7 +61,7 @@
     $proj_file = isset($row['proj_file'])? $row['proj_file'] : null;
 
     if(strlen($proj_desc) > 50 ){
-      $proj_desc = (substr($proj_desc, 0, 200)).'...';
+      $proj_desc = (substr($proj_desc, 0, 120)).'...';
     }
 
     if(!empty($proj_file)){
@@ -46,7 +71,6 @@
           <a href="project.php?id='.$proj_id.'"><h4>'.$proj_title.'</h4></a>
           <p>'.$proj_desc.'</p>
           <p class="visible-desktop"><a href="project.php?id='.$proj_id.'">View Details &raquo;</a></p>
-              <p class="hidden-desktop"><a class="btn btn-small btn-info" href="project.php?id='.$proj_id.'">View Details &raquo;</a></p>
 
       </div>
       <div class="clearfix"></div>  
@@ -64,11 +88,14 @@
   }
 ?>
     </div>
-    <div class="categories span4">
+
+    <div class="sidebar span4 visible-desktop">
        <h2>Categories</h2>
-          <ul>
+          <ul class="categories">
+          <li class="all_cats"><a href="index.php">All Categories (Most Recent)</li>
+
           <?php 
-          
+          //loop through each category and display the results
           foreach($categories as $cat){
               echo '<li>'.'<a href="index.php?category='.strtolower($cat['proj_cat']).'">'.htmlentities($cat['proj_cat']).' : ('.$cat['count'].')</a></li>';   
             }

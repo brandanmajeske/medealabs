@@ -48,7 +48,7 @@ $rows = $data;
 		$proj_file = isset($row['proj_file'])? $row['proj_file'] : null;
 
 		if(strlen($proj_desc) > 50 ){
-			$proj_desc = (substr($proj_desc, 0, 200)).'...';
+			$proj_desc = (substr($proj_desc, 0, 100)).'...';
 		}
 
 		if(!empty($proj_file)){
@@ -58,7 +58,7 @@ $rows = $data;
   				<a href="project.php?id='.$proj_id.'"><h4>'.$proj_title.'</h4></a>
   				<p>'.$proj_desc.'</p>
   				<p class="visible-desktop"><a href="project.php?id='.$proj_id.'">View Details &raquo;</a></p>
-          		<p class="hidden-desktop pull-right"><a class="btn btn-small btn-info" href="project.php?id='.$proj_id.'">View Details &raquo;</a></p>
+          		<p class="hidden-desktop"><a class="btn btn-small btn-info" href="project.php?id='.$proj_id.'">View Details &raquo;</a></p>
 
 			</div>
 			<div class="clearfix"></div>	
@@ -92,7 +92,7 @@ $rows = $data;
 		$proj_file = isset($row['proj_file'])? $row['proj_file'] : null;
 
 		if(strlen($proj_desc) > 50 ){
-			$proj_desc = (substr($proj_desc, 0, 200)).'...';
+			$proj_desc = (substr($proj_desc, 0, 100)).'...';
 		}
 
 		if(!empty($proj_file)){
@@ -104,7 +104,7 @@ $rows = $data;
   				<p class="visible-desktop"><a href="project.php?id='.$proj_id.'">View Details &raquo;</a></p>
           		<p class="hidden-desktop pull-right"><a class="btn btn-small btn-info" href="project.php?id='.$proj_id.'">View Details &raquo;</a></p>
 
-			</div>
+			</div><!-- end single project -->
 			<div class="clearfix"></div>	
 			';
 
