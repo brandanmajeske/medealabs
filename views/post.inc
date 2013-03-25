@@ -26,8 +26,14 @@
 		<label for="post_text">Post Body:</label>
 		<textarea name="post_text" id="post_text"><?php if(isset($_POST['post_text']) === true ) {echo strip_tags($_POST['post_text']); } ?></textarea>
 		<br />
-		<input type="submit" class="btn btn-warning" value="Submit">
+		
 	</p>
+
+	 <div>
+		<div class="controls">
+		<input type="submit" class="btn btn-warning" value="Submit">
+	</div>
+
 	
 </form>
 

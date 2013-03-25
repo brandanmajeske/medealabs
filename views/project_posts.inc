@@ -24,7 +24,12 @@ $proj_date = date('M dS Y - h:i A', $timestamp);
 			echo '<p><img class="post_image" src="uploads/'.$proj_file.'" alt="'.$proj_title.' image" /></p>';
 	}
 ?>
-<p><a class="btn btn-warning" href="post.php?proj_id=<?php echo $proj_id; ?>">Contribute to Project</a><p>
+<div class="clearfix">
+<p><a class="btn btn-warning" href="post.php?proj_id=<?php echo $proj_id; ?>">Contribute to Project</a></p>
+
+<p><a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none" data-hashtags="brandanmajeske">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+</div>
 <p>
 Project ID: <?php echo $proj_id; ?><br />
 Project Author: <?php echo ucwords($user_name); ?><br />
@@ -40,8 +45,9 @@ Description: <?php echo ucfirst($proj_desc); ?></p>
 		}
 	?>
 </div>
-
+	
 </div>
+
 
 <!-- Posts involving this project go here. -->
 

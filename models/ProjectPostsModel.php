@@ -2,6 +2,7 @@
 
 require_once('inc/Database.php');
 require_once('inc/ProjectDatabaseHelper.php');
+require_once('inc/TwitterHelper.php');
 
 class ProjectPostsModel {
 
@@ -43,10 +44,9 @@ class ProjectPostsModel {
 			$newfilename = "./uploads/".basename($saveddate."-".$uploadfilename);
 			$post_file ='';
 			if($_FILES['images']['name']){
-				echo '<pre>',print_r($_FILES),'</pre>';
+
 				$post_file = basename($saveddate."-".$uploadfilename);
 			}
-
 			move_uploaded_file($tmp_name, $newfilename);
 
 			$user_id = Database::user_id_query($_SESSION['username']);
@@ -60,7 +60,7 @@ class ProjectPostsModel {
 				'post_file' => $post_file
 				);
 
-			//echo '<pre>',print_r($post_data),'</pre>';
+		
 			ProjectDatabaseHelper::new_post($post_data);
 
 		}
@@ -138,7 +138,6 @@ class ProjectPostsModel {
 			}
 			
 
-			//echo '<pre>',print_r($post_data),'</pre>';
 			ProjectDatabaseHelper::update_post($post_data);
 		
 		} // end if

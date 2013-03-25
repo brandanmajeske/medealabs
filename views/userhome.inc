@@ -42,6 +42,10 @@ $rows = $data;
 <div class="span12">
 <?php 
 	
+	if(empty($rows)){
+		echo '<a href="create_project.php">Start A New Project &raquo;</a>';
+	}
+
 	foreach($rows as $num => $row){
 		$proj_title = $row['proj_title'];
 		$proj_desc = $row['proj_desc'];
