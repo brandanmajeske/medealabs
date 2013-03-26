@@ -33,7 +33,7 @@ if(isset($_GET['edit'])){
 	$proj_id = $post_data['proj_id'];
 	$model->edit_post($post_id,$proj_id);
 	
-	//print_r($post_data);
+
 
 	$errors = $model->edit_post($proj_id);
 }
@@ -46,10 +46,7 @@ if(isset($_GET['delete'])){
 	$model->delete_post($post_id);
 }
 
-/*if(isset($_GET['tweet'])){
-	$content_page = 'tweet';
 
-}*/
 
 
 $view->show('header');
@@ -59,7 +56,3 @@ $view->show('footer');
 
 ?>
 
-<!-- $postmod = new ProjectPostsModel();
-$posts = array();
-$postmod->get_posts($posts);
-$posts = $postmod::get_posts('posts'); -->

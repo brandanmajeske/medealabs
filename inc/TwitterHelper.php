@@ -20,7 +20,7 @@ class TwitterHelper {
 		echo '<pre>',print_r($status, true),'</pre>';
 
 		
-		$reply = (array) $cb->statuses_update($status);
+		//$reply = (array) $cb->statuses_update($status);
 
 		//echo '<pre>',print_r($reply, true),'</pre>';
 

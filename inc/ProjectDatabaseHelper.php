@@ -76,6 +76,86 @@ public static function show_project($proj_id){
 
 }// end get_project
 
+public static function get_projects(){
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+	$statement = $db->prepare("
+			SELECT *
+			FROM projects
+			ORDER BY `proj_id` DESC;
+		");
+	
+	try{
+
+		if($statement->execute()){
+			$rows = $statement->fetchAll(\PDO::FETCH_ASSOC);
+			$fp = fopen('./uploads/temp/results.json', 'w');
+			fwrite($fp, json_encode($rows));
+			fclose($fp);
+			
+			}
+	}
+	
+	catch(\PDOException $e){
+		echo '<div class="alert alert-error"><p><strong>Something is wrong!</strong><br />We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: <br />'.$e->getMessage().'</p></div>';
+	}
+
+}// end get_projects
+
+public static function get_user_projects($user_id){
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+	$statement = $db->prepare("
+			SELECT *
+			FROM projects
+			WHERE user_id = :user_id
+			ORDER BY `proj_id` DESC;
+		");
+	
+	try{
+		$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
+		if($statement->execute()){
+			$rows = $statement->fetchAll(\PDO::FETCH_ASSOC);
+			$fp = fopen('./uploads/temp/results.json', 'w');
+			fwrite($fp, json_encode($rows));
+			fclose($fp);
+			}
+	}
+	
+	catch(\PDOException $e){
+		echo '<div class="alert alert-error"><p><strong>Something is wrong!</strong><br />We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: <br />'.$e->getMessage().'</p></div>';
+	}
+
+}// end get_projects
+
+public static function get_user_posts($user_id){
+	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
+	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+
+	$statement = $db->prepare("
+			SELECT *
+			FROM posts
+			WHERE user_id = :user_id
+			ORDER BY `post_id` DESC;
+		");
+	
+	try{
+		$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
+		if($statement->execute()){
+			$rows = $statement->fetchAll(\PDO::FETCH_ASSOC);
+			$fp = fopen('./uploads/temp/results.json', 'w');
+			fwrite($fp, json_encode($rows));
+			fclose($fp);
+			}
+	}
+	
+	catch(\PDOException $e){
+		echo '<div class="alert alert-error"><p><strong>Something is wrong!</strong><br />We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: <br />'.$e->getMessage().'</p></div>';
+	}
+
+}// end get_projects
 
 public static function update_project($proj_data){
 	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);

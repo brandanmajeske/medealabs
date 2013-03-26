@@ -36,7 +36,15 @@
   <div class="sidebar span12 hidden-desktop">
        <?php if(isset($_SESSION['username'])){
             echo ' <h2>User Links</h2>
-             <ul class="sidebar_ul"><li class="sidebar_link_separator"><a href="home.php">User Home</a></li></ul>';
+            <ul class="sidebar_ul">
+            <li class="sidebar_link_separator" /><a href="home.php">User Home</a>
+            <li /><a href="create_project.php">Create A Project</a>
+            <li /><a href="search.php">Search Projects</a>
+            <li /><a href="search.php?your_projects">Your Projects</a>
+            <li /><a href="#">Your Posts</a>
+            <li /><a href="profile.php">Edit Your Profile</a>
+
+             </ul>';
            }?>
        <h2>Categories</h2>
           <ul class="sidebar_ul">
@@ -95,7 +103,14 @@
     <div class="sidebar span4 visible-desktop">
        <?php if(isset($_SESSION['username'])){
             echo ' <h2>User Links</h2>
-             <ul class="sidebar_ul"><li class="sidebar_link_separator"><a href="home.php">User Home</a></li></ul>';
+             <ul class="sidebar_ul">
+             <li class="sidebar_link_separator" /><a href="home.php">User Home</a>
+             <li /><a href="create_project.php">Create A Project</a>
+             <li /><a href="search.php">Search Projects</a>
+             <li /><a href="search.php?your_projects">Your Projects</a>
+             <li /><a href="#">Your Posts</a>
+             <li /><a href="profile.php">Edit Your Profile</a>
+             </ul>';
            }?>
        <h2>Categories</h2>
           <ul class="sidebar_ul">

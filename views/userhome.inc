@@ -10,16 +10,16 @@ $rows = $data;
 	<!-- tablet/phone menu -->
 
 <div class="btn-group btn-large hidden-desktop pull-right">
-  <button class="btn btn-warning btn-large disabled">Actions</button>
-  <button class="btn btn-warning btn-large dropdown-toggle" data-toggle="dropdown">
+  <button class="btn btn-large disabled">Actions</button>
+  <button class="btn btn-large dropdown-toggle" data-toggle="dropdown">
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-    <li><a href="create_project.php">Create A Project</a></li>
-	<li><a href="#">Search Projects</a></li>
-	<li><a href="#">Your Projects</a></li>
-	<li><a href="#">Your Posts</a></li>
-	<li><a href="profile.php">Edit Your Profile</a></li>
+	<li /><a href="create_project.php">Create A Project</a>
+	<li /><a href="search.php">Search All Projects</a>
+	<li /><a href="search.php?your_projects">Search Your Projects</a>
+	<li /><a href="search.php?your_posts">Search Your Posts</a>
+	<li /><a href="profile.php">Edit Your Profile</a>
   </ul>
   </div>
 <h1><?php echo ucfirst($username);?>'s Home Page
@@ -127,12 +127,12 @@ $rows = $data;
 ?>
 </div>
 <div class="span3 visible-desktop user_menu">
-		<ul class="nav nav-list">
+	<ul class="nav nav-list">
 	  	<li class="nav-header">User Menu</li>
 	 	<li /><a href="create_project.php">Create A Project</a>
-		<li /><a href="#">Search Projects</a>
-		<li /><a href="#">Your Projects</a>
-		<li /><a href="#">Your Posts</a>
+		<li /><a href="search.php">Search All Projects</a>
+		<li /><a href="search.php?your_projects">Search Your Projects</a>
+		<li /><a href="search.php?your_posts">Search Your Posts</a>
 		<li /><a href="profile.php">Edit Your Profile</a>
 	</ul>
 	</div>
