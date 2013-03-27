@@ -5,9 +5,11 @@
 </div>
 <div>
 <h3>Terms of Service</h3>
-<p>The Terms of Service are simple: Be kind to all, don't raise a ruckus, and keep the content 'family-friendly'! Our grandmothers use this site and if you upset Mamaw, we will certainly hear about it, and you'll be in trouble. The administrators reserve the right to remove content as they see fit, however the offending post in question will be reviewed, and poster can dispute the removal. If it was all a silly misunderstanding the content will be returned to its original condition.</p>
+<p>The Terms of Service are simple: Be kind to all, don't raise a ruckus, and keep the content 'family-friendly'! Our grandmothers use this site and if you upset Mamaw, we will certainly hear about it, and you'll be in trouble. The administrators reserve the right to remove content as they see fit, however the offending post in question will be reviewed, and the post-owner can dispute the removal. If it was all a silly misunderstanding the content will be returned to its original condition.</p>
 
 <p>The goal of Medea Labs is to share images and ideas that are interesting, thought provoking, and enhance our users lives in some way. Please share content with that goal in mind.</p>
+
+<p>We're going out on a limb here and assuming the content posted by you is your intellectual property. We're trusting you here, please don't post content that doesn't belong to you unless you have express permission by the copywrite holder. Violating this rule may result in bannishment from the land. There, you've been warned. Now, for those sad individuals that are tempted to steal work from others: Don't do it here! The consequences aren't pretty. In addition to contracting parasitic worms in your intestines, you'll be banished from the land AND shot into space. Stealing is <em>that</em> uncool!</p>
 </div>
 
 <div>

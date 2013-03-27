@@ -4,13 +4,6 @@ require_once('inc/Database.php');
 
 class RegisterModel { 
 
-	public function test_connection($result) {
-		
-		$result = Database::test_connection();
-		return $result;
-
-	} // end test_connection
-
 
 	public function registerCheck(){
 				
@@ -18,7 +11,7 @@ class RegisterModel {
 				
 
 				if(empty($_POST) === false){
-					$required_fields = array('user_name', 'password', 'password_confirm', 'full_name', 'email');
+					$required_fields = array('user_name', 'password', 'password_confirm', 'full_name', 'email', 'tos');
 
 
 					foreach($_POST as $key=>$value) {
@@ -69,9 +62,13 @@ class RegisterModel {
 						$errors[] = "Sorry the email '".$email."'' is already in use";
 					}
 				}// end isset email
-					
-
-			}
+				
+				$tos = (isset($_POST['tos'])) ? $_POST['tos'] : null;
+				
+				if(isset($tos) && $tos != 'agree'){
+					$errors[] = 'Please read and agree to the Terms of Servce';
+					}
+				}
 
 		//Start Register User
 		if(empty($_POST) === false && empty($errors) === true) {
