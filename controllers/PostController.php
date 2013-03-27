@@ -27,15 +27,18 @@ if(isset($_GET['proj_id'])){
 
 // Edit post change content page to show the edit form
 if(isset($_GET['edit'])){
+	//get the post id from the url
 	$post_id = $_GET['edit'];
+	//change content page to edit post
 	$content_page = 'edit_post';
+	//get the post contents to 
 	$post_data = $model->get_single_post($post_id);
 	$proj_id = $post_data['proj_id'];
 	$model->edit_post($post_id,$proj_id);
 	
 
 
-	$errors = $model->edit_post($proj_id);
+	$errors = $model->edit_post($post_id, $proj_id);
 }
 // Delete post 
 if(isset($_GET['delete'])){

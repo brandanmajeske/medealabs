@@ -4,7 +4,7 @@ require_once('models/ProjectPostsModel.php');
 require_once('models/EditProjectModel.php');
 require_once('models/View.php');
 
-
+//variables
 $view = new View();
 $model = new ProjectPostsModel();
 $postmod = new ProjectPostsModel();

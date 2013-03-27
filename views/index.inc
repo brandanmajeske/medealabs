@@ -38,11 +38,11 @@
             echo ' <h2>User Links</h2>
             <ul class="sidebar_ul">
             <li class="sidebar_link_separator" /><a href="home.php">User Home</a>
-            <li /><a href="create_project.php">Create A Project</a>
-            <li /><a href="search.php">Search Projects</a>
-            <li /><a href="search.php?your_projects">Your Projects</a>
-            <li /><a href="#">Your Posts</a>
-            <li /><a href="profile.php">Edit Your Profile</a>
+            <li><a href="create_project.php">Create A Project</a></li>
+            <li><a href="search.php">Search All Projects</a></li>
+            <li><a href="search.php?your_projects">Search Your Projects</a></li>
+            <li><a href="search.php?your_posts">Search Your Posts</a></li>
+            <li><a href="profile.php">Edit Your Profile</a></li>
 
              </ul>';
            }?>
@@ -105,11 +105,11 @@
             echo ' <h2>User Links</h2>
              <ul class="sidebar_ul">
              <li class="sidebar_link_separator" /><a href="home.php">User Home</a>
-             <li /><a href="create_project.php">Create A Project</a>
-             <li /><a href="search.php">Search Projects</a>
-             <li /><a href="search.php?your_projects">Your Projects</a>
-             <li /><a href="#">Your Posts</a>
-             <li /><a href="profile.php">Edit Your Profile</a>
+              <li><a href="create_project.php">Create A Project</a></li>
+              <li><a href="search.php">Search All Projects</a></li>
+              <li><a href="search.php?your_projects">Search Your Projects</a></li>
+              <li><a href="search.php?your_posts">Search Your Posts</a></li>
+              <li><a href="profile.php">Edit Your Profile</a></li>
              </ul>';
            }?>
        <h2>Categories</h2>

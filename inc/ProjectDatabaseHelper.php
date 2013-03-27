@@ -403,7 +403,7 @@ public static function update_post($post_data){
 			//$statement->bindValue("post_file", $post_file, PDO::PARAM_STR);
 			if ($statement->execute()){		
 				//$_SESSION['username'] = $user_name;
-				header('Location: project.php?id='.$proj_id);
+				header('Refresh:0 ; URL=project.php?id='.$proj_id.'');
 				}
 			}
 

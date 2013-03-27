@@ -8,13 +8,18 @@ $model = new IndexModel();
 $data = array();
 $content_page = '';
 
+/*if GET = category change the content page to by category
+pass the category variable to the get_by_category function
+which returns the categories that are passed to the view
+*/
+
 if(isset($_GET['category'])){
 	$content_page = 'by_categories';
 	$category = $_GET['category'];
 	$projects = $model->get_by_category($category);
 	$categories = $model->get_category_count();
 	$data['categories'] = $categories;
-
+//else just show the regular index page
 }else{
 	$content_page = 'index';
 	// get the 5 latest projects from the database
@@ -23,11 +28,6 @@ if(isset($_GET['category'])){
 	$categories = $model->get_category_count();
 	$data['categories'] = $categories;
 }
-
-
-
-
-//echo '<pre>',print_r($data),'</pre>';
 
 $view->show('header');
 $view->show($content_page, $projects, $data);

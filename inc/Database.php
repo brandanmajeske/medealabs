@@ -23,7 +23,7 @@ public static function user_exists($username) {
 	$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
 	$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 	$statement = $db->prepare("
-		SELECT * FROM sers WHERE user_name = :user_name;
+		SELECT * FROM users WHERE user_name = :user_name;
 		");
 
 	try {
