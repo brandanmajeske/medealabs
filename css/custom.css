@@ -7,10 +7,16 @@ body {
 	clear: both;
 }
 
-h1, h2 {
+h1, h2, h3, h4 {
 	font-family: "Prosto One", sans-serif;
 	color: #FA7500;
 }
+
+h3, h4 {
+  font-family: "Duru Sans", sans-serif;
+  color: rgba(29,170,255, 1);
+}
+
 
 a {
 	color: rgba(29,170,255, 1);

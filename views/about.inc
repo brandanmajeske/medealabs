@@ -5,14 +5,14 @@
 </div>
 <div>
 <h3>Terms of Service</h3>
-<p>This will be replaced with actual terms of service currently being hammered out. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Etiam porta sem malesuada magna mollis euismod. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+<p>The Terms of Service are simple: Be kind to all, don't raise a ruckus, and keep the content 'family-friendly'! Our grandmothers use this site and if you upset Mamaw, we will certainly hear about it, and you'll be in trouble. The administrators reserve the right to remove content as they see fit, however the offending post in question will be reviewed, and poster can dispute the removal. If it was all a silly misunderstanding the content will be returned to its original condition.</p>
 
-<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum.</p>
+<p>The goal of Medea Labs is to share images and ideas that are interesting, thought provoking, and enhance our users lives in some way. Please share content with that goal in mind.</p>
 </div>
 
 <div>
 <h3>Reporting Abuse</h3>
-<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Etiam porta sem malesuada magna mollis euismod. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+<p>If you feel you've seen something of a questionable nature on Medea Labs, please do not hesistate to report it. We will review your claim and take the necessary actions. Just hit the 'report abuse' button!</p>
 <p>
 <a class="btn btn-info" href="contact.php">Report Abuse</a>
 </p>
