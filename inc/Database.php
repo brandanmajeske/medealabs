@@ -1,7 +1,7 @@
 <?php 
 
-require_once 'inc/db.php';
-
+require_once('inc/db.php');
+require_once('inc/error_log.php');
 
 // Helpers //
 
@@ -35,6 +35,8 @@ public static function user_exists($username) {
 		}
 	catch(\PDOException $e){
 		echo $db_error.$e->getMessage().'</div>';
+		$msg =  $db_error.$e->getMessage();
+		Log::general($msg);
 		}
 } // end user_exists
 
@@ -55,6 +57,8 @@ public static function email_exists($email) {
 		}
 	catch(\PDOException $e){
 		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';		
+		$msg =  $db_error.$e->getMessage();
+		Log::general($msg);
 		}
 
 } // end email_exists
@@ -90,6 +94,8 @@ public static function register_user($register_data){
 		}
 	catch(\PDOException $e){
 		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+		$msg =  $db_error.$e->getMessage();
+		Log::general($msg);
 	}
 } // end register_user
 
@@ -115,6 +121,8 @@ public static function user_id_query($user_name){
 	}
 	catch(\PDOException $e){
 		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+		$msg =  $db_error.$e->getMessage();
+		Log::general($msg);
 	}
 }// end user_id_query
 
@@ -148,6 +156,8 @@ public static function new_project($proj_data){
 		}
 	catch(\PDOException $e){
 		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+		$msg =  $db_error.$e->getMessage();
+		Log::general($msg);
 	}
 
 
@@ -165,12 +175,18 @@ public static function get_projects($user_id){
 			on users.user_id = projects.user_id
 			WHERE projects.user_id = :user_id;
 		");
-	$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
-	if($statement->execute()){
+	try {
+			$statement->bindValue("user_id", $user_id, PDO::PARAM_STR);
+			if($statement->execute()){
 			$rows = $statement->fetchAll(\PDO::FETCH_ASSOC);
 			return $rows;
+			}
 		}
-
+	catch(\PDOException $e){
+		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+		$msg =  $db_error.$e->getMessage();
+		Log::general($msg);
+	}
 } // end get_projects
 
 
@@ -200,38 +216,11 @@ public function test_image_uploader() {
 	}// end try
 	catch(\PDOException $e){
 		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+		$msg =  $db_error.$e->getMessage();
+		Log::general($msg);
 	} // end catch
 
 }// end test_image_uploader
- /*
-create table testblob (
-    image_id        tinyint(3)  not null default '0',
-    image_type      varchar(25) not null default '',
-    image           blob        not null,
-    image_size      varchar(25) not null default '',
-    image_ctgy      varchar(25) not null default '',
-    image_name      varchar(50) not null default ''
-);
 
-$imgData = file_get_contents($filename);
-$size = getimagesize($filename);
-mysql_connect("localhost", "$username", "$password");
-mysql_select_db ("$dbname");
-$sql = "INSERT INTO testblob
-    ( image_id , image_type ,image, image_size, image_name)
-    VALUES
-    ('', '{$size['mime']}', '{$imgData}', '{$size[3]}', 
-     '{$_FILES['userfile']['name']}')";
-mysql_query($sql);
-You can display an image from the database in a web page with:
-
-$link = mysql_connect("localhost", "username", "password");
-mysql_select_db("testblob");
-$sql = "SELECT image FROM testblob WHERE image_id=0";
-$result = mysql_query("$sql");
-header("Content-type: image/jpeg");
-echo mysql_result($result, 0);
-mysql_close($link);
- */
 
 }

@@ -22,11 +22,11 @@ if(isset($_GET['your_projects'])){
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-	<li /><a href="create_project.php">Create A Project</a>
-	<li /><a href="search.php">Search All Projects</a>
-	<li /><a href="search.php?your_projects">Search Your Projects</a>
-	<li /><a href="search.php?your_posts">Search Your Posts</a>
-	<li /><a href="profile.php">Edit Your Profile</a>
+	<li><a href="create_project.php">Create A Project</a></li>
+    <li><a href="search.php">Search All Projects</a></li>
+    <li><a href="search.php?your_projects">Search Your Projects</a></li>
+    <li><a href="search.php?your_posts">Search Your Posts</a></li>
+    <li><a href="profile.php">Edit Your Profile</a></li>
   </ul>
   </div>
 <h1>Project Search</h1>
@@ -61,11 +61,11 @@ if(isset($_GET['your_projects'])){
 <div class="span3 visible-desktop user_menu">
 	<ul class="nav nav-list">
 	  	<li class="nav-header">User Menu</li>
-		<li /><a href="create_project.php">Create A Project</a>
-		<li /><a href="search.php">Search All Projects</a>
-		<li /><a href="search.php?your_projects">Search Your Projects</a>
-		<li /><a href="search.php?your_posts">Search Your Posts</a>
-		<li /><a href="profile.php">Edit Your Profile</a>
+			<li><a href="create_project.php">Create A Project</a></li>
+            <li><a href="search.php">Search All Projects</a></li>
+            <li><a href="search.php?your_projects">Search Your Projects</a></li>
+            <li><a href="search.php?your_posts">Search Your Posts</a></li>
+            <li><a href="profile.php">Edit Your Profile</a></li>
 	</ul>
 	</div>
 </div>

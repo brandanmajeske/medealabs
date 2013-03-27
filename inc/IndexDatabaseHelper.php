@@ -1,6 +1,7 @@
 <?php
 
 require_once('inc/db.php');
+require_once('inc/error_log.php');
 
 class IndexDatabaseHelper {
 
@@ -25,12 +26,14 @@ class IndexDatabaseHelper {
 		}
 		catch(\PDOException $e){
 		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+		$msg =  $db_error.$e->getMessage();
+		Log::general($msg);
 	}
 
 
 	} // end get_latest_projects
 
-
+/*
 	public static function get_latest_posts(){
 
 		echo 'These are the latest and greatest posts!';
@@ -39,7 +42,7 @@ class IndexDatabaseHelper {
 	public static function get_latest_user(){
 
 		echo 'These are the latest and greatest users!';
-	}
+	}*/
 
 	public static function get_category_count(){
 
@@ -60,9 +63,11 @@ class IndexDatabaseHelper {
 		}
 		catch(\PDOException $e){
 		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+		$msg =  $db_error.$e->getMessage();
+		Log::general($msg);
 	}
 		
-	}
+	} // end get_category_count
 
 	public static function get_by_category($category){
 		$db = new \PDO(MY_DSN, MY_USER, MY_PASS);
@@ -83,6 +88,8 @@ class IndexDatabaseHelper {
 		}
 		catch(\PDOException $e){
 		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+		$msg =  $db_error.$e->getMessage();
+		Log::general($msg);
 		}
 		
 	}
