@@ -11,7 +11,7 @@ class RegisterModel {
 				
 
 				if(empty($_POST) === false){
-					$required_fields = array('user_name', 'password', 'password_confirm', 'full_name', 'email', 'tos');
+					$required_fields = array('user_name', 'password', 'password_confirm', 'full_name', 'email');
 
 
 					foreach($_POST as $key=>$value) {
@@ -64,11 +64,10 @@ class RegisterModel {
 				}// end isset email
 				
 				$tos = (isset($_POST['tos'])) ? $_POST['tos'] : null;
-				
-				if(isset($tos) && $tos != 'agree'){
-					$errors[] = 'Please read and agree to the Terms of Servce';
+				if(empty($tos)){
+					$errors[] = 'Please read and agree to the Terms of Service';
 					}
-				}
+				} // end terms of service
 
 		//Start Register User
 		if(empty($_POST) === false && empty($errors) === true) {
@@ -82,8 +81,6 @@ class RegisterModel {
 				);
 			
 			Database::register_user($register_data);
-			//redirect
-			//$_SESSION['username'] = $_POST['user_name'];
 			exit();
 		} 
 

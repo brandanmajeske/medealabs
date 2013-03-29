@@ -35,9 +35,7 @@ if(isset($_GET['edit'])){
 	$post_data = $model->get_single_post($post_id);
 	$proj_id = $post_data['proj_id'];
 	$model->edit_post($post_id,$proj_id);
-	
-
-
+	// get errors and assign to a variable to be passed to the view
 	$errors = $model->edit_post($post_id, $proj_id);
 }
 // Delete post 
@@ -49,9 +47,7 @@ if(isset($_GET['delete'])){
 	$model->delete_post($post_id);
 }
 
-
-
-
+// show header content page and footer
 $view->show('header');
 $view->show($content_page, $errors, $post_data);
 $view->show('footer');

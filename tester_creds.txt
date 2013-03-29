@@ -1,5 +1,0 @@
-*** TESTER CREDENTIALS ***
-
-
-User Name = Tester
-Password = password

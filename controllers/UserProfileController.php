@@ -31,11 +31,11 @@ if(!$result){
 if(isset($_GET['update'])){
 	$model->update_profile();
 }
-
+//if user is deleting profile call the delete method
 if(isset($_GET['delete'])){
 	$model->delete_user_profile();
 }
-
+// show views for the user profile page and pass the content to the views
 $view->show('header');
 $view->show($content_page, $errors, $user_profile_data);
 $view->show('footer');
