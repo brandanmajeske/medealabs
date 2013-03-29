@@ -29,6 +29,15 @@ if(isset($_GET['category'])){
 	$data['categories'] = $categories;
 }
 
+/*
+* If user registers for newsletter add name to newsletter db table
+*/
+
+if(isset($_POST['newsletter'])){
+	$model->newsletter();
+}
+
+
 $view->show('header');
 $view->show($content_page, $projects, $data);
 $view->show('footer');

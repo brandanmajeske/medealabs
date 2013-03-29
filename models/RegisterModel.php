@@ -63,8 +63,8 @@ class RegisterModel {
 					}
 				}// end isset email
 				
-				$tos = (isset($_POST['tos'])) ? $_POST['tos'] : null;
-				if(empty($tos)){
+				// check if user acknowledged the terms of service
+				if(empty($_POST) === false && empty($_POST['tos'])){
 					$errors[] = 'Please read and agree to the Terms of Service';
 					}
 				} // end terms of service

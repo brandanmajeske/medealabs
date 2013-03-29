@@ -4,10 +4,12 @@
   $data_array = $data2;  
   $categories = ($data_array['categories']);
 
-  //echo '<pre>',print_r($data_array, true),'</pre>';
-  //var_dump($data_array);
-  
-
+  // message to display when users register for the newsletter
+  if(isset($_GET['subscribed'])){
+  echo('<div class="alert alert-info">
+    <p>You\'ve been registered for the Newsletter!
+    </p></div>');
+  }
 ?>
 
 <!-- Main hero unit for a primary marketing message or call to action -->
@@ -56,6 +58,17 @@
               echo '<li>'.'<a href="index.php?category='.strtolower($cat['proj_cat']).'">'.htmlentities($cat['proj_cat']).' : ('.$cat['count'].')</a></li>';   
             } 
           ?>
+        </ul>
+        <!-- News Letter -->
+          <h2>Newsletter</h2>
+          <ul class="sidebar_ul">
+          <li>
+            <form action="" method="post">
+            <label for="newsletter">Sign Up For Our Newsletter</label>
+            <input class="span12" type="text" name="newsletter" id="newsletter" placeholder="name@email.com" /><br />
+            <input type="submit" class="btn btn-warning btn-small" value="Submit" />
+            </form>
+         </li>
         </ul>
     </div>
 </div>
@@ -122,10 +135,22 @@
               echo '<li>'.'<a href="index.php?category='.strtolower($cat['proj_cat']).'">'.htmlentities($cat['proj_cat']).' : ('.$cat['count'].')</a></li>';   
             } 
           ?>
+          <li class="sidebar_link_separator"></li>
+          </ul>
+          <!-- News Letter -->
+          <h2>Newsletter</h2>
+          <ul class="sidebar_ul">
+          <li>
+            <form action="" method="post">
+            <label for="newsletter">Sign Up For Our Newsletter</label>
+            <input class="span12" type="text" name="newsletter" id="newsletter" placeholder="name@email.com" /><br />
+            <input type="submit" class="btn btn-warning btn-small" value="Submit" />
+            </form>
+         </li>
         </ul>
-       
+
+
            
-        
     </div>
   </div>
 </div>       

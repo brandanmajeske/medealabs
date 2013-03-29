@@ -33,16 +33,6 @@ class IndexDatabaseHelper {
 
 	} // end get_latest_projects
 
-/*
-	public static function get_latest_posts(){
-
-		echo 'These are the latest and greatest posts!';
-	}
-
-	public static function get_latest_user(){
-
-		echo 'These are the latest and greatest users!';
-	}*/
 
 	public static function get_category_count(){
 
@@ -93,6 +83,32 @@ class IndexDatabaseHelper {
 		}
 		
 	}
+
+
+	public static function register_newsletter($email){
+		$db = new PDO(MY_DSN, MY_USER, MY_PASS);
+		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		$statement = $db->prepare("
+				INSERT INTO newsletter_subscribers (`email`) 
+				VALUES (:email);
+			");
+
+		try{
+			$statement->bindValue("email", $email, PDO::PARAM_STR);
+			if($statement->execute()){
+				
+				header('Refresh:0 ; URL=index.php?subscribed');
+			}
+			return FALSE;
+		}
+		catch(\PDOException $e){
+		echo '<div class="alert alert-error"><p>Something is wrong. We have dispatched a pack of trained monkeys to fix the problem. If you see them, show them this: '.$e->getMessage().'</div>';
+		$msg =  $db_error.$e->getMessage();
+		Log::general($msg);
+		}
+
+	} // end register newsletter
 
 } // end IndexDatabaseHelper
 
