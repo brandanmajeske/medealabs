@@ -10,19 +10,16 @@ $content_page = '';
 $user_profile_data = null;
 
 // check if user profile exists then change view appropriately
-//$model->check_for_profile();
 $result = $model->check_for_profile('result');
 
 
 if(!$result){
-	//echo 'its false';
+	
 	$content_page = 'create_user_profile';
 	$errors = $model->new_profile('errors');
 }else{
-	//echo 'its true';
+	
 	$content_page = 'edit_user_profile';
-	//echo $_SESSION['username'];
-	//$model->get_profile();
 	$user_profile_data = $model->get_profile('user_profile_data');
 }
 	
