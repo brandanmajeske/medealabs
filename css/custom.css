@@ -307,12 +307,16 @@ hr {
 .post_header {
   display: block;
   padding: 2px 5%; 
-  color: #f5f5f5;
+
   font-family: "Prosto One", sans-serif;
   font-size: 1em;
   background: url('../img/blue_texture.png');
   border: 1px solid #0F6191;
   box-shadow: 0px -1px 4px rgba(15,97,145,.5);
+}
+
+.post_header h4 {
+  color: #f5f5f5!important;
 }
 
 .post_text {

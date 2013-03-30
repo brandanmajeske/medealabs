@@ -2,7 +2,7 @@
 
 require_once('inc/Database.php');
 require_once('inc/ProjectDatabaseHelper.php');
-require_once('inc/TwitterHelper.php');
+
 
 class ProjectPostsModel {
 

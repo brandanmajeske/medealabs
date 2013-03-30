@@ -9,6 +9,7 @@ $var = '';
   <head>
     <meta charset="utf-8">
     <title>Medea Labs</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A community of creative people sharing ideas">
     <meta name="author" content="Brandan Majeske">
